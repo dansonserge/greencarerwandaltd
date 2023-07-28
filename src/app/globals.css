@@ -37,11 +37,10 @@ body {
 
 .intro-text {
   color: #3C3F40;
-font-family: Roboto;
-font-size: 26.6px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .customButtonOne{
@@ -54,4 +53,54 @@ line-height: normal;
   color: #FDFDFD;
   line-height: 2.6;
   font-weight: bold;
+}
+.customButtonTwo{
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 0px 24px 24px 24px;
+  background: var(--gradient-color-accent);
+
+}
+
+.customButtonTwo::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 0px 24px 24px 24px;
+  background-color: #FDFDFD;
+  z-index: -1;
+  transition: 200ms
+}
+
+/* .customButtonTwo::after {
+  content: attr(data);
+  font-size: 16px;
+  background: var(--gradient-color-accent);
+  color: transparent;
+  transition: 200ms;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+/* .customButtonTwo:hover{
+  color: ;
+} */
+
+/* .customButtonTwo:hover::before {
+  opacity: 50%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  color: white;
+} */
+
+.customButtonTwo:hover::after{
+  color: white;
 }
