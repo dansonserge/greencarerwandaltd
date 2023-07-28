@@ -3,50 +3,37 @@ import IntroDotsWrapper from "@/assets/IntroDots.svg";
 import Image from "next/image";
 import IntroDot from "@/assets/IntroDot.svg";
 import SelectedDot from "@/assets/SelectedIntroDot.svg";
+import DotsSelector from "./DotsSelector";
+import BannerImageOne from "@/assets/BannerImageOne.svg"
+import CustomButton from "../CustomButton";
 
 const IntroCarousel = () => {
-
-  const [selectedDot, setSelectedDot] = useState<number>(0);
-
   return (
-    <div className="min-h-[300px] mt-12">
-      <div className="relative">
-        <Image
-          src={IntroDotsWrapper}
-          alt={"GreenCareRwanda Ltd Logo"}
-          width={70}
-          height={60}
-          className="absolute"
-        />
+    <div className="flex">
+      <DotsSelector />
 
-        <div className="flex flex-col gap-5 absolute mt-20 ml-5">
-          {Array(3)
-            .fill("")
-            .map((item, index) =>
-              index === selectedDot ? (
-                <Image
-                  key={index}
-                  src={SelectedDot}
-                  alt={"GreenCareRwanda Ltd Logo"}
-                  width={15}
-                  height={15}
-                  onClick={()=>setSelectedDot(index)}
-                />
-              ) : (
-                <Image
-                  key={index}
-                  src={IntroDot}
-                  alt={"GreenCareRwanda Ltd Logo"}
-                  width={15}
-                  height={15}
-                  onClick={()=>setSelectedDot(index)}
-                />
-              )
-            )}
+      <div className="flex my-16 mx-16 ml-40 items-center w-full justify-between">
+        <div className="">
+          <div className="text-7xl font-black text-dark-blue">
+            <p>Our Environment,</p>
+            <p>Our <span className="gradient-accent-color">Concern</span></p>
+          </div>
+          <div className="w-[700px] mt-14 intro-text mb-16">
+            <span className="font-bold">Greencare Rwanda ltd </span>conducts research and develop the business
+            models for waste management by supporting the public sector to
+            convert the landfill into recycling plants to promote circular
+            economy and environmental protection.
+          </div>
+          <div className="flex">
+            <CustomButton text="About us"/>
+          </div>
+        </div>
+        <div>
+          <Image src={BannerImageOne} alt={"Banner Image One"}  width={840}/>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default IntroCarousel;

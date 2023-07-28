@@ -15,7 +15,8 @@ module.exports = {
       colors:{
         'green': '#09731B',
         'dark-blue': '#20224F',
-        'gradient-gray':'linear-gradient(var(--gradient-grey))'
+        'gradient-gray':'linear-gradient(var(--gradient-grey))',
+        'gradient-accent':'linear-gradient(90deg, #30D7AF 2.65%, #74E62F 100%)'
       },
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],

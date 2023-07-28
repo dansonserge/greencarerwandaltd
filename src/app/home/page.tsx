@@ -11,11 +11,11 @@ const Home = () => {
     return(
         <Layout>
             <IntroCarousel/>
-            <OurProducts/>
+           {/*  <OurProducts/>
             <BookOurConsultancy/>
             <SmallAboutUs/>
             <WhoWeAre/>
-            <OurProducts/>
+            <OurProducts/> */}
         </Layout>
     )
 }

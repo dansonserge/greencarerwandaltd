@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import React from 'react'
 
-function CustomButton() {
+const CustomButton = ({text}:{text: string}) => {
   return (
-    <div>CustomButton</div>
+    <Link href={''} className="customButtonOne">{text}</Link>
   )
 }
 

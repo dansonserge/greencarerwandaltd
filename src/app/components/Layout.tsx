@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="body-font font-roboto">
       <TopMenu />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

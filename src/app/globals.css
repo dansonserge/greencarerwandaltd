@@ -4,7 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -13,26 +12,46 @@
   --secondary-color: 32, 34, 79, 1;
   --black-color: 60, 63, 64, 1;
   --gradient-grey: linear-gradient(180deg, #FDFDFD 0%, #F2F2F2 100%);
+  --gradient-color-accent: linear-gradient(90deg, #30D7AF 2.65%, #74E62F 100%);
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
- */
 
 body {
   color: rgb(var(--black-color));
   background-color: rgb(var(--gradient-grey));
 }
 
-.intro-dots-selectors-wrapper{
+.intro-dots-selectors-wrapper {
   width: 91px;
   height: 333.799px;
   flex-shrink: 0;
   border-radius: 397px;
   fill: linear-gradient(180deg, #FDFDFD 0%, #F2F2F2 100%);
+}
+
+.gradient-accent-color {
+  background: var(--gradient-color-accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-text {
+  color: #3C3F40;
+font-family: Roboto;
+font-size: 26.6px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.customButtonOne{
+  width: 142px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 0px 24px 24px 24px;
+  background: #20224F;
+  text-align: center;
+  color: #FDFDFD;
+  line-height: 2.6;
+  font-weight: bold;
 }
