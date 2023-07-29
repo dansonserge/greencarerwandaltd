@@ -33,18 +33,20 @@ function SmallAboutUs() {
         </div>
         <div className="w-3/12">
           <table>
-            <tr>
-              <td>400</td>
-              <td>Tons per year of compost</td>
-            </tr>
-            <tr>
-              <td>2,560</td>
-              <td>Meter Square / Year of ecological pavers</td>
-            </tr>
-            <tr>
-              <td>25</td>
-              <td>Number of employees</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>400</td>
+                <td>Tons per year of compost</td>
+              </tr>
+              <tr>
+                <td>2,560</td>
+                <td>Meter Square / Year of ecological pavers</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>Number of employees</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

@@ -13,10 +13,6 @@ const OurProducts = () => {
     products[1]
   );
 
-  const [selectedDot, setSelectedDot] = useState<number>(0);
-
-
-
   return (
     <div className="flex mx-20">
       <div className="w-[800px] mt-10">

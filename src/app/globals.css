@@ -15,6 +15,20 @@
   --gradient-color-accent: linear-gradient(90deg, #30D7AF 2.65%, #74E62F 100%);
 }
 
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+
 body {
   color: rgb(var(--black-color));
   background-color: rgb(var(--gradient-grey));
