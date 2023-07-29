@@ -2,6 +2,7 @@
 import BookOurConsultancy from "../components/BookOurConsultancy";
 import IntroCarousel from "../components/IntroCarousel";
 import Layout from "../components/Layout";
+import OurPartners from "../components/OurPartners";
 import OurProducts from "../components/OurProducts";
 import SmallAboutUs from "../components/SmallAboutUs";
 import TopMenu from "../components/TopMenu";
@@ -13,10 +14,9 @@ const Home = () => {
             <IntroCarousel/>
             <OurProducts/>
             <BookOurConsultancy/>
-           {/*
             <SmallAboutUs/>
             <WhoWeAre/>
-            <OurProducts/> */}
+            <OurPartners/>
         </Layout>
     )
 }
