@@ -10,7 +10,7 @@ import ArrowRightIcon from "@/assets/arrow-right-icon.svg";
 
 const OurProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductType>(
-    products[1]
+    products[0]
   );
 
   return (

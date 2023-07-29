@@ -16,9 +16,19 @@ const CustomButton = ({
       {type === "normal" && (
         <Link
           href={""}
-          className="customButtonOne flex items-center justify-center "
+          className="customButtonOne flex items-center justify-center gap-2"
         >
           {text}
+          {icon && <Image src={icon} alt={text} />}
+        </Link>
+      )}
+      {type === "normal-right" && (
+        <Link
+          href={""}
+          className="customButtonFour flex items-center justify-center gap-2"
+        >
+          {text}
+          {icon && <Image src={icon} alt={text} />}
         </Link>
       )}
 
