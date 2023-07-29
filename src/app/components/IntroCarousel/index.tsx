@@ -6,7 +6,7 @@ import SelectedDot from "@/assets/SelectedIntroDot.svg";
 import DotsSelector from "./DotsSelector";
 import BannerImageOne from "@/assets/BannerImageOne.svg"
 import CustomButton from "../CustomButton";
-import ContactUsIcon from "@/assets/contactUsIcon.svg"
+import ContactUsIcon from "@/assets/contactUsIcon.svg";
 
 const IntroCarousel = () => {
   return (

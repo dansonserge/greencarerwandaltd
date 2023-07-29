@@ -11,7 +11,7 @@ const DotsSelector = () => {
       <div>
         <Image
           src={IntroDotsWrapper}
-          alt={"GreenCareRwanda Ltd Logo"}
+          alt={""}
           width={70}
           height={60}
           className="absolute"
@@ -25,7 +25,7 @@ const DotsSelector = () => {
                 <Image
                   key={index}
                   src={SelectedDot}
-                  alt={"GreenCareRwanda Ltd Logo"}
+                  alt={""}
                   width={15}
                   height={15}
                   onClick={()=>setSelectedDot(index)}
@@ -34,7 +34,7 @@ const DotsSelector = () => {
                 <Image
                   key={index}
                   src={IntroDot}
-                  alt={"GreenCareRwanda Ltd Logo"}
+                  alt={""}
                   width={15}
                   height={15}
                   onClick={()=>setSelectedDot(index)}

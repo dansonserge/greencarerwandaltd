@@ -15,6 +15,7 @@ module.exports = {
       colors:{
         'green': '#09731B',
         'dark-blue': '#20224F',
+        'light-grey': '#F8F8F8',
         'gradient-gray':'linear-gradient(var(--gradient-grey))',
         'gradient-accent':'linear-gradient(90deg, #30D7AF 2.65%, #74E62F 100%)'
       },
