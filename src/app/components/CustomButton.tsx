@@ -13,14 +13,32 @@ const CustomButton = ({
 }) => {
   return (
     <>
-      {type === "normal" ? (
-        <Link href={""} className="customButtonOne flex items-center justify-center ">
+      {type === "normal" && (
+        <Link
+          href={""}
+          className="customButtonOne flex items-center justify-center "
+        >
           {text}
         </Link>
-      ) : (
-        <Link href={""} className="customButtonTwo flex items-center justify-center gap-1">
+      )}
+
+      {type === "gradient" && (
+        <Link
+          href={""}
+          className="customButtonTwo flex items-center justify-center gap-1"
+        >
           <span className="gradient-accent-color font-bold">Contact us</span>
-         {icon && <Image src={icon} alt={text}/>}
+          {icon && <Image src={icon} alt={text} />}
+        </Link>
+      )}
+
+      {type === "gradient-right-arrow" && (
+        <Link
+          href={""}
+          className="customButtonThree flex items-center justify-center gap-1"
+        >
+          <span className="gradient-accent-color font-bold">Contact us</span>
+          {icon && <Image src={icon} alt={text} />}
         </Link>
       )}
     </>

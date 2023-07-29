@@ -12,8 +12,8 @@ const Home = () => {
         <Layout>
             <IntroCarousel/>
             <OurProducts/>
-           {/*
             <BookOurConsultancy/>
+           {/*
             <SmallAboutUs/>
             <WhoWeAre/>
             <OurProducts/> */}
