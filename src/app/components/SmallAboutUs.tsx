@@ -6,13 +6,15 @@ function SmallAboutUs() {
   return (
     <div className="mt-20 mx-10">
       <div className="flex gap-4 items-center">
-        <div className="w-4/12">
+        <div className="w-4/12 ">
           <Image src={AboutUsImage} alt={"about us"} />
         </div>
-        <div className="w-5/12">
-          <div>About us</div>
-          <div>
-            <div>Our Mission</div>
+        <div className="w-5/12 flex flex-col gap-7 ml-5">
+          <div className="gradient-accent-color font-bold text-4xl">
+            About us
+          </div>
+          <div className="flex flex-col gap-3">
+            <div className="text-dark-blue font-bold text-xl">Our Mission</div>
             <div>
               Greencare Rwanda ltd is to revolutionize  waste management by
               providing integrated solutions  that promote  production and
@@ -21,8 +23,8 @@ function SmallAboutUs() {
               to other recycling factories for a greener future.
             </div>
           </div>
-          <div>
-            <div>Our Vision</div>
+          <div className="flex flex-col gap-3">
+            <div className="text-dark-blue font-bold text-xl">Our Vision</div>
             <div>
               To be one of the top companies in waste management services and
               market leader in the production and sales of branded  organic
@@ -35,16 +37,30 @@ function SmallAboutUs() {
           <table>
             <tbody>
               <tr>
-                <td>400</td>
-                <td>Tons per year of compost</td>
+                <td className="text-dark-blue text-5xl text-right font-poppins font-black pb-4">
+                  400
+                </td>
+                <td className="text-[#2A6419] pl-5 pb-4">
+                  <p>Tons per year</p>
+                  <p>of compost</p>
+                </td>
               </tr>
               <tr>
-                <td>2,560</td>
-                <td>Meter Square / Year of ecological pavers</td>
+                <td className="text-dark-blue text-5xl text-right font-poppins font-black pb-4">
+                  2,560
+                </td>
+                <td className="text-[#2A6419] pl-5 pb-4">
+                  <p>Meter Square / Year</p> <p>of ecological pavers</p>{" "}
+                </td>
               </tr>
               <tr>
-                <td>25</td>
-                <td>Number of employees</td>
+                <td className="text-dark-blue text-5xl text-right font-poppins font-black">
+                  25
+                </td>
+                <td className="text-[#2A6419] pl-5">
+                  <p>Number </p>
+                  <p>of employees</p>
+                </td>
               </tr>
             </tbody>
           </table>
