@@ -1,8 +1,4 @@
-import { useState } from "react";
-import IntroDotsWrapper from "@/assets/IntroDots.svg";
 import Image from "next/image";
-import IntroDot from "@/assets/IntroDot.svg";
-import SelectedDot from "@/assets/SelectedIntroDot.svg";
 import DotsSelector from "./DotsSelector";
 import BannerImageOne from "@/assets/BannerImageOne.svg"
 import CustomButton from "../CustomButton";

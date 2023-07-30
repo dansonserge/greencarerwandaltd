@@ -6,7 +6,7 @@ import ContactUsIcon from "@/assets/contactUsIcon.svg";
 
 function BookOurConsultancy() {
   return (
-    <div className="mt-[150px] flex items-center gap-8 mx-auto w-3/4 ">
+    <div className="mt-[150px] flex items-center gap-8 w-4/5 ">
       <div className="flex flex-1">
         <Image
           className="ml-auto"
@@ -19,14 +19,14 @@ function BookOurConsultancy() {
           Book our <span className="gradient-accent-color">consultancy</span>{" "}
           services Today{" "}
         </div>
-        <div className=" font-poppins text-lg">
+        <div className="font-[400] text-[#272727] text-xl">
           We provide a consultant in waste management by developing the best
           model for waste management and composting system for good quality,
           project assistant in solid waste management, advise in agriculture,
           recyclable materials treatments.
         </div>
         <div className="relative">
-          <div className="absolute mt-[10px] right-0">
+          <div className="absolute mt-[20px] right-0">
             <CustomButton
               text="Contact us"
               type={"gradient-right-arrow"}

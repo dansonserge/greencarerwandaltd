@@ -15,7 +15,7 @@ function SmallAboutUs() {
           </div>
           <div className="flex flex-col gap-3">
             <div className="text-dark-blue font-bold text-xl">Our Mission</div>
-            <div>
+            <div className="font-[400] text-[#272727] text-xl">
               Greencare Rwanda ltd is to revolutionize  waste management by
               providing integrated solutions  that promote  production and
               distribution of organic fertilizers (Grekompost), plastics pavers
@@ -25,7 +25,7 @@ function SmallAboutUs() {
           </div>
           <div className="flex flex-col gap-3">
             <div className="text-dark-blue font-bold text-xl">Our Vision</div>
-            <div>
+            <div className="font-[400] text-[#272727] text-xl">
               To be one of the top companies in waste management services and
               market leader in the production and sales of branded  organic
               fertilizers,  plastics pavers and recyclables materials to promote
@@ -33,7 +33,7 @@ function SmallAboutUs() {
             </div>
           </div>
         </div>
-        <div className="w-3/12">
+        <div className="w-3/12 flex flex-col ">
           <table>
             <tbody>
               <tr>

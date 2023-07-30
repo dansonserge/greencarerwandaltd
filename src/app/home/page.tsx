@@ -1,4 +1,4 @@
-
+"use client"
 import BookOurConsultancy from "../components/BookOurConsultancy";
 import IntroCarousel from "../components/IntroCarousel";
 import Layout from "../components/Layout";
