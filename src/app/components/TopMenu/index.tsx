@@ -11,7 +11,7 @@ function TopMenu() {
   const [isMenuShown, setIsMenuShown] = useState<boolean>(false);
   return (
     <>
-      <div className="mx-12 m-3 lg:flex lg:justify-between">
+      <div className="mx-3 m-1 lg:mx-12 lg:m-3 lg:flex lg:justify-between">
         <div className="flex justify-between items-center">
           <Image
             src={GreenCareLogo}
@@ -36,7 +36,7 @@ function TopMenu() {
           </span>
         </div>
 
-        <span className="lg:block hidden">
+        <span className="lg:block hidden lg:mt-2">
           <Menu />
         </span>
         <span className={` mt-5 ${isMenuShown ? `block` : `hidden`}`}>
