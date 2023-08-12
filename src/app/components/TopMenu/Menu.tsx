@@ -6,8 +6,8 @@ const Menu = () => {
   const [activeRoute, setActiveRoute] = useState<string>("/");
 
   return (
-    <nav>
-      <ul className="flex items-center justify-end font-medium">
+    <nav className="">
+      <ul className="lg:flex lg:items-center lg:justify-end font-medium">
         {navLinks.map((link, index) => {
           return (
             <li

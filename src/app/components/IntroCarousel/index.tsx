@@ -11,7 +11,7 @@ const IntroCarousel = () => {
 
       <div className="flex my-16 mx-16 ml-40 items-center w-full justify-between">
         <div className="flex-1">
-          <div className="text-7xl font-black text-dark-blue">
+          <div className="font-black text-dark-blue">
             <p>Our Environment,</p>
             <p>Our <span className="gradient-accent-color">Concern</span></p>
           </div>

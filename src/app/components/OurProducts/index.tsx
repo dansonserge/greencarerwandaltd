@@ -18,7 +18,7 @@ const OurProducts = () => {
       <div className="w-[800px] mt-10">
         <div className="absolute z-10">
         <div className="gradient-accent-color font-black text-2xl mb-5">Our products</div>
-        <div className="text-dark-blue font-black text-6xl z-10 w-12 h-32">{selectedProduct.productName}</div>
+        <div className="text-dark-blue font-black text-6xl z-10 w-12 sm:text-5xl h-32">{selectedProduct.productName}</div>
         <div>
           <div className="flex gap-5 m-5">
             {products.map((item, index) =>
