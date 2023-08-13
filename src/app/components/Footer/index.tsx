@@ -66,7 +66,7 @@ function Footer() {
               <Image src={Youtube} alt="youtube" width={50} />{" "}
             </Link>
           </div>
-          <div className="flex gap-8">
+          <div className="flex gap-8 text-xs md:text-lg md:mx-0">
             {footerLinks.map((link, index) => {
               return (
                 <Link key={index} href={"#"}>

@@ -5,16 +5,21 @@ import AboutUsImage from "@/assets/about-us-image.svg";
 function SmallAboutUs() {
   return (
     <div className="mt-20 mx-10">
-      <div className="flex gap-4 items-center">
-        <div className="w-4/12 ">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-4 items-center">
+        <div className="w-4/12 hidden md:block">
           <Image src={AboutUsImage} alt={"about us"} />
         </div>
-        <div className="w-5/12 flex flex-col gap-7 ml-5">
+        <div className="w-full md:w-5/12 flex flex-col gap-7 ml-5">
           <div className="gradient-accent-color font-bold text-4xl">
             About us
           </div>
+
+          <div className="w-full md:hidden">
+            <Image src={AboutUsImage} alt={"about us"} />
+          </div>
+
           <div className="flex flex-col gap-3">
-            <div className="text-dark-blue font-bold text-xl">Our Mission</div>
+            <div className="text-dark-blue font-bold text-2xl">Our Mission</div>
             <div className="font-[400] text-[#272727] text-xl">
               Greencare Rwanda ltd is to revolutionize  waste management by
               providing integrated solutions  that promote  production and
@@ -24,7 +29,7 @@ function SmallAboutUs() {
             </div>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="text-dark-blue font-bold text-xl">Our Vision</div>
+            <div className="text-dark-blue font-bold text-2xl">Our Vision</div>
             <div className="font-[400] text-[#272727] text-xl">
               To be one of the top companies in waste management services and
               market leader in the production and sales of branded  organic
@@ -33,7 +38,7 @@ function SmallAboutUs() {
             </div>
           </div>
         </div>
-        <div className="w-3/12 flex flex-col ">
+        <div className="w-full md:w-3/12 flex flex-col">
           <table>
             <tbody>
               <tr>
