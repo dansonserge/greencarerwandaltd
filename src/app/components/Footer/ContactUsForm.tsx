@@ -4,7 +4,7 @@ import SendMessageIcon from "@/assets/send-message-icon.svg";
 
 function ContactUsForm() {
   return (
-    <div className="bg-white px-10 py-5 absolute contactUsForm ">
+    <div className="bg-white px-4 md:px-10 py-5 md:absolute contactUsForm ">
     <p className="ml-2 gradient-accent-color font-[700] text-2xl py-4">Contact us now</p>
     <form className="flex flex-col gap-5">
       <div className="flex flex-col gap-2">
