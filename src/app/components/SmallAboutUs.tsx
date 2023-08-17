@@ -4,7 +4,7 @@ import AboutUsImage from "@/assets/about-us-image.svg";
 
 function SmallAboutUs() {
   return (
-    <div className="mt-20 mx-10">
+    <div className="mt-20 mx-10" id="/about-us">
       <div className="flex flex-col md:flex-row gap-6 md:gap-4 items-center">
         <div className="w-4/12 hidden md:block">
           <Image src={AboutUsImage} alt={"about us"} />

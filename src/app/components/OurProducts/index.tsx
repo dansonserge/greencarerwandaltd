@@ -14,7 +14,7 @@ const OurProducts = () => {
   );
 
   return (
-    <div className="flex flex-col xl:flex-row mx-5 xl:mx-20">
+    <div className="flex flex-col xl:flex-row mx-5 xl:mx-20" id="/products">
       <span className="xl:hidden block">
         <div className="gradient-accent-color font-black text-3xl mb-5">
           Our products

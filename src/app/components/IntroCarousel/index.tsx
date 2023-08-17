@@ -6,7 +6,7 @@ import ContactUsIcon from "@/assets/contactUsIcon.svg";
 
 const IntroCarousel = () => {
   return (
-    <div className="flex">
+    <div className="flex" id="/">
       <span className="hidden lg:block">
         <DotsSelector />
       </span>

@@ -9,9 +9,12 @@ import Menu from "./Menu";
 
 function TopMenu() {
   const [isMenuShown, setIsMenuShown] = useState<boolean>(false);
+
+
+
   return (
     <>
-      <div className="mx-3 m-1 lg:mx-12 lg:m-3 lg:flex lg:justify-between">
+      <div className="px-3 lg:px-12 lg:p-3 lg:flex lg:justify-between sticky bg-white top-0 z-50">
         <div className="flex justify-between items-center">
           <Image
             src={GreenCareLogo}
@@ -31,7 +34,7 @@ function TopMenu() {
               className={`${isMenuShown ? `block` : `hidden`}`}
               onClick={() => setIsMenuShown(false)}
             >
-              <Image src={CloseIcon} alt="close menu" height={40}/>
+              <Image src={CloseIcon} alt="close menu" height={40} />
             </span>
           </span>
         </div>

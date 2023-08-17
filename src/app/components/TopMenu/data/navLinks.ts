@@ -4,24 +4,24 @@ export const navLinks = [
         route: '/'
     },
     {
-        name: 'About us',
-        route: '/about-us'
+        name: 'Products',
+        route: '/products'
     },
     {
         name: 'Services',
         route: '/services'
     },
     {
-        name: 'Products',
-        route: '/products'
-    },
-    {
-        name: 'Gallery',
-        route: '/gallery'
+        name: 'About us',
+        route: '/about-us'
     },
     {
         name: 'Contact us',
         route: '/contact-us'
+    },
+    {
+        name: 'Gallery',
+        route: '/gallery'
     },
     {
         name: 'Blog',
