@@ -32,7 +32,7 @@ function ContactUsForm() {
 
   };
 
-  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: true };
+  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: false };
 
   const [formData, setFormData] = useState(initState);
   const [touched, setTouched] = useState<TouchedFieldsType>(initTouchedValues);
