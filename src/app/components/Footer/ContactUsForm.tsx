@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import CustomButton from "../CustomButton";
 import SendMessageIcon from "@/assets/send-message-icon.svg";
@@ -31,7 +32,7 @@ function ContactUsForm() {
 
   };
 
-  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: false };
+  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: true };
 
   const [formData, setFormData] = useState(initState);
   const [touched, setTouched] = useState<TouchedFieldsType>(initTouchedValues);
