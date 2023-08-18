@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import RefreshIcon from "@/assets/refresh.svg";
 
 const CustomButton = ({
   text,
   type,
   icon,
+  isLoading,
   handleOnClick,
 }: {
   text: string;
   type: string;
   icon?: string;
+  isLoading?: boolean;
   handleOnClick?: () => void;
 }) => {
   return (
@@ -20,7 +23,8 @@ const CustomButton = ({
           className="customButtonOne flex items-center justify-center gap-2"
         >
           {text}
-          {icon && <Image src={icon} alt={text} />}
+
+          {icon && !isLoading && <Image src={icon} alt={text} />}
         </button>
       )}
       {type === "normal-right" && (
@@ -29,18 +33,24 @@ const CustomButton = ({
           className="customButtonFour flex items-center justify-center gap-2"
         >
           {text}
-          {icon && <Image src={icon} alt={text} />}
+          {isLoading && (
+            <Image
+              src={RefreshIcon}
+              alt="loading"
+              className="motion-safe:animate-spin h-5 w-5 mr-3 text-white"
+            />
+          )}
+          {icon && !isLoading && <Image src={icon} alt={text} />}
         </button>
       )}
 
       {type === "gradient" && (
         <button
-
           onClick={() => handleOnClick}
           className="customButtonTwo flex items-center justify-center gap-1"
         >
           <span className="gradient-accent-color font-bold">Contact us</span>
-          {icon && <Image src={icon} alt={text} />}
+          {icon && !isLoading && <Image src={icon} alt={text} />}
         </button>
       )}
 
@@ -50,7 +60,14 @@ const CustomButton = ({
           className="customButtonThree flex items-center justify-center gap-1"
         >
           <span className="gradient-accent-color font-bold">Contact us</span>
-          {icon && <Image src={icon} alt={text} />}
+          {isLoading && (
+            <Image
+              src={RefreshIcon}
+              alt="loading"
+              className="motion-safe:animate-spin h-5 w-5 mr-3"
+            />
+          )}
+          {icon && !isLoading && <Image src={icon} alt={text} />}
         </button>
       )}
     </>

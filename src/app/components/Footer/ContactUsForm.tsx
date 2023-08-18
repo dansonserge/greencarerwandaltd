@@ -21,20 +21,22 @@ function ContactUsForm() {
     email: "",
     phone: "",
     message: "",
+
   };
   const initTouchedValues = {
     names: false,
     email: false,
     phone: false,
     message: false,
+
   };
 
-  const initState: { values: FormDataType } = { values: initValues };
+  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: false };
 
   const [formData, setFormData] = useState(initState);
   const [touched, setTouched] = useState<TouchedFieldsType>(initTouchedValues);
 
-  const { values } = formData;
+  const { values, isLoading } = formData;
 
   const handleSendEmail = () => {
     console.log("sending the email");
@@ -47,7 +49,15 @@ function ContactUsForm() {
     setFormData((prev) => ({
       ...prev.values,
       values: { ...prev.values, [target.name]: target.value },
+      isLoading: true
     }));
+
+    const onSubmit = async () =>{
+      setFormData((prev) => ({
+        ...prev,
+        isLoading:true
+      }))
+    }
 
   return (
     <div className="bg-white px-4 md:px-10 py-5  contactUsForm w-full lg:w-5/6">
@@ -131,6 +141,7 @@ function ContactUsForm() {
           <CustomButton
             type="normal-right"
             text="Send"
+            isLoading={isLoading}
             icon={SendMessageIcon}
           />
         </div>
