@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
 import CustomButton from "../CustomButton";
-import SendMessageIcon from "@/assets/send-message-icon.svg";
+import SendMessageIcon from "@public/assets/send-message-icon.svg";
 
 function ContactUsForm() {
   interface FormDataType {
@@ -22,17 +22,18 @@ function ContactUsForm() {
     email: "",
     phone: "",
     message: "",
-
   };
   const initTouchedValues = {
     names: false,
     email: false,
     phone: false,
     message: false,
-
   };
 
-  const initState: { values: FormDataType, isLoading: boolean } = { values: initValues, isLoading: false };
+  const initState: { values: FormDataType; isLoading: boolean } = {
+    values: initValues,
+    isLoading: false,
+  };
 
   const [formData, setFormData] = useState(initState);
   const [touched, setTouched] = useState<TouchedFieldsType>(initTouchedValues);
@@ -50,15 +51,15 @@ function ContactUsForm() {
     setFormData((prev) => ({
       ...prev.values,
       values: { ...prev.values, [target.name]: target.value },
-      isLoading: true
+      isLoading: true,
     }));
 
-    const onSubmit = async () =>{
-      setFormData((prev) => ({
-        ...prev,
-        isLoading:true
-      }))
-    }
+  const onSubmit = async () => {
+    setFormData((prev) => ({
+      ...prev,
+      isLoading: true,
+    }));
+  };
 
   return (
     <div className="bg-white px-4 md:px-10 py-5  contactUsForm w-full lg:w-5/6">

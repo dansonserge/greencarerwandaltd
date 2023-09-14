@@ -1,7 +1,7 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 import Image from "next/image";
-import WhoWeAreImage from "@/assets/whowere-image.svg";
+import WhoWeAreImage from "@public/assets/whowere-image.svg";
 
 function WhoWeAre() {
   return (

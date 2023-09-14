@@ -1,12 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import ConsultantImage from "@/assets/consultant-image.svg";
+import ConsultantImage from "@public/assets/consultant-image.svg";
 import CustomButton from "./CustomButton";
-import ContactUsIcon from "@/assets/contactUsIcon.svg";
+import ContactUsIcon from "@public/assets/contactUsIcon.svg";
 
 function BookOurConsultancy() {
   return (
-    <div className="mt-[150px] flex flex-col md:flex-row items-center gap-8 w-full md:w-4/5" id="/services">
+    <div
+      className="mt-[150px] flex flex-col md:flex-row items-center gap-8 w-full md:w-4/5"
+      id="/services"
+    >
       <div className="ml-5 md:ml-0 text-dark-blue font-bold text-4xl md:text-[45px] md:w-[450px] md:hidden">
         Book our <span className="gradient-accent-color">consultancy</span>{" "}
         services Today{" "}

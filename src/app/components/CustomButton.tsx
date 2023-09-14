@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import RefreshIcon from "@/assets/refresh.svg";
+import RefreshIcon from "@public/assets/refresh.svg";
 
 const CustomButton = ({
   text,

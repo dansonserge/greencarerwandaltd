@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import AboutUsImage from "@/assets/about-us-image.svg";
+import AboutUsImage from "@public/assets/about-us-image.svg";
 
 function SmallAboutUs() {
   return (

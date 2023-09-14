@@ -1,8 +1,8 @@
 import { useState } from "react";
-import IntroDotsWrapper from "@/assets/IntroDots.svg";
+import IntroDotsWrapper from "@public/assets/IntroDots.svg";
 import Image from "next/image";
-import IntroDot from "@/assets/IntroDot.svg";
-import SelectedDot from "@/assets/SelectedIntroDot.svg";
+import IntroDot from "@public/assets/IntroDot.svg";
+import SelectedDot from "@public/assets/SelectedIntroDot.svg";
 
 const DotsSelector = () => {
   const [selectedDot, setSelectedDot] = useState<number>(0);
@@ -28,7 +28,7 @@ const DotsSelector = () => {
                   alt={""}
                   width={15}
                   height={15}
-                  onClick={()=>setSelectedDot(index)}
+                  onClick={() => setSelectedDot(index)}
                 />
               ) : (
                 <Image
@@ -37,7 +37,7 @@ const DotsSelector = () => {
                   alt={""}
                   width={15}
                   height={15}
-                  onClick={()=>setSelectedDot(index)}
+                  onClick={() => setSelectedDot(index)}
                 />
               )
             )}
@@ -45,6 +45,6 @@ const DotsSelector = () => {
       </div>
     </div>
   );
-}
+};
 
 export default DotsSelector;

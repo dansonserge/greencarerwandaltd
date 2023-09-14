@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { products } from "./productsList";
 import { ProductType } from "./types";
 import Image from "next/image";
-import IntroDot from "@/assets/IntroDot.svg";
-import SelectedDot from "@/assets/SelectedIntroDot.svg";
+import IntroDot from "@public/assets/IntroDot.svg";
+import SelectedDot from "@public/assets/SelectedIntroDot.svg";
 import CustomButton from "../CustomButton";
-import ContactUsIcon from "@/assets/contactUsIcon.svg";
-import ArrowRightIcon from "@/assets/arrow-right-icon.svg";
+import ContactUsIcon from "@public/assets/contactUsIcon.svg";
+import ArrowRightIcon from "@public/assets/arrow-right-icon.svg";
 
 const OurProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductType>(

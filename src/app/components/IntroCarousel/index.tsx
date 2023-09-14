@@ -1,8 +1,8 @@
 import Image from "next/image";
 import DotsSelector from "./DotsSelector";
-import BannerImageOne from "@/assets/BannerImageOne.svg";
+import BannerImageOne from "@public/assets/BannerImageOne.svg";
 import CustomButton from "../CustomButton";
-import ContactUsIcon from "@/assets/contactUsIcon.svg";
+import ContactUsIcon from "@public/assets/contactUsIcon.svg";
 
 const IntroCarousel = () => {
   return (

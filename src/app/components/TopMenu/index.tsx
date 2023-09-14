@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 
 import Image from "next/image";
-import GreenCareLogo from "@/assets/GreenCareLogo.svg";
-import MenuBar from "@/assets/menu-bars.svg";
-import CloseIcon from "@/assets/close.svg";
+import GreenCareLogo from "@public/assets/GreenCareLogo.svg";
+import MenuBar from "@public/assets/menu-bars.svg";
+import CloseIcon from "@public/assets/close.svg";
 
 import Menu from "./Menu";
 
 function TopMenu() {
   const [isMenuShown, setIsMenuShown] = useState<boolean>(false);
-
-
 
   return (
     <>

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import GreenCareLogo from "@/assets/GreenCareLogo.svg";
+import GreenCareLogo from "@public/assets/GreenCareLogo.svg";
 import CustomButton from "../CustomButton";
 
-import TwitterLogo from "@/assets/twitter-logo.svg";
-import InstagramLogo from "@/assets/instagram.svg";
-import Youtube from "@/assets/youtube.svg";
+import TwitterLogo from "@public/assets/twitter-logo.svg";
+import InstagramLogo from "@public//assets/instagram.svg";
+import Youtube from "@public/assets/youtube.svg";
 import { footerLinks } from "./footerMenu";
 import ContactUsForm from "./ContactUsForm";
 

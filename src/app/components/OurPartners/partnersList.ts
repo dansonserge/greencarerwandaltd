@@ -1,17 +1,17 @@
 import { PartnetsType } from "./types";
-import Segal from "@/assets/partners/segal.svg";
-import BDF from "@/assets/partners/bdf.svg";
-import REMA from "@/assets/partners/rema.svg";
-import Tony from "@/assets/partners/tony.svg";
-import Yean from "@/assets/partners/yean.svg";
-import Nirda from "@/assets/partners/nirda.svg";
-import MiniYouth from "@/assets/partners/miniyouth.svg";
-import Minagri from "@/assets/partners/minagri.svg";
-import Minitrade from "@/assets/partners/minitrade.svg";
-import Huye from "@/assets/partners/huye.svg";
-import Umujyojyo from "@/assets/partners/umujyojyo.svg";
-import Rab from "@/assets/partners/rab.svg";
-import Ryaf from "@/assets/partners/ryaf.svg";
+import Segal from "@public/assets/partners/segal.svg";
+import BDF from "@public/assets/partners/bdf.svg";
+import REMA from "@public/assets/partners/rema.svg";
+import Tony from "@public/assets/partners/tony.svg";
+import Yean from "@public/assets/partners/yean.svg";
+import Nirda from "@public/assets/partners/nirda.svg";
+import MiniYouth from "@public/assets/partners/miniyouth.svg";
+import Minagri from "@public/assets/partners/minagri.svg";
+import Minitrade from "@public/assets/partners/minitrade.svg";
+import Huye from "@public/assets/partners/huye.svg";
+import Umujyojyo from "@public/assets/partners/umujyojyo.svg";
+import Rab from "@public/assets/partners/rab.svg";
+import Ryaf from "@public/assets/partners/ryaf.svg";
 
 export const partners :PartnetsType [] = [
     {
