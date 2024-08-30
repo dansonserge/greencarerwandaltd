@@ -36,7 +36,6 @@ function TopMenu() {
             </span>
           </span>
         </div>
-
         <span className="lg:block hidden lg:mt-2">
           <Menu />
         </span>

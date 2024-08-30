@@ -1,30 +1,39 @@
-export const navLinks = [
+export interface MenuItem {
+    name: string;
+    route: string;
+    isHomeLink: boolean;
+  }
+
+
+export const navLinks : MenuItem[]= [
     {
         name: 'Home',
-        route: '/'
+        route: '/',
+        isHomeLink: true
     },
     {
         name: 'Products',
-        route: '/products'
+        route: '/products',
+        isHomeLink: true
     },
     {
         name: 'Services',
-        route: '/services'
+        route: '/services',
+        isHomeLink: true
     },
     {
         name: 'About us',
-        route: '/about-us'
+        route: '/about-us',
+        isHomeLink: true
     },
     {
         name: 'Contact us',
-        route: '/contact-us'
-    },
-    {
-        name: 'Gallery',
-        route: '/gallery'
+        route: '/contact-us',
+        isHomeLink: true
     },
     {
         name: 'Blog',
-        route: '/blog'
+        route: '/blog',
+        isHomeLink: false
     }
 ];

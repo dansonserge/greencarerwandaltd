@@ -3,6 +3,7 @@ import DotsSelector from "./DotsSelector";
 import BannerImageOne from "@public/assets/BannerImageOne.svg";
 import CustomButton from "../CustomButton";
 import ContactUsIcon from "@public/assets/contactUsIcon.svg";
+import { redirect } from "next/navigation";
 
 const IntroCarousel = () => {
   return (
@@ -29,12 +30,17 @@ const IntroCarousel = () => {
             plants to promote circular economy and environmental protection.
           </div>
           <div className="flex gap-4">
-            <CustomButton text="About us" type={"normal"} />
-            <CustomButton
-              text="Contact us"
-              type={"gradient"}
-              icon={ContactUsIcon}
-            />
+            <a href="/about">
+              <CustomButton text="About us" type={"normal"} />
+            </a>
+
+            <a href="contact">
+              <CustomButton
+                text="Contact us"
+                type={"gradient"}
+                icon={ContactUsIcon}
+              />
+            </a>
           </div>
         </div>
         <div className="hidden lg:block">

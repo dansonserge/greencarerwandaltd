@@ -19,7 +19,7 @@ const CustomButton = ({
     <>
       {type === "normal" && (
         <button
-          onClick={() => handleOnClick}
+          onClick={handleOnClick}
           className="customButtonOne flex items-center justify-center gap-2"
         >
           {text}
@@ -29,7 +29,7 @@ const CustomButton = ({
       )}
       {type === "normal-right" && (
         <button
-          onClick={() => handleOnClick}
+          onClick={handleOnClick}
           className="customButtonFour flex items-center justify-center gap-2"
         >
           {text}
@@ -46,7 +46,7 @@ const CustomButton = ({
 
       {type === "gradient" && (
         <button
-          onClick={() => handleOnClick}
+          onClick={handleOnClick}
           className="customButtonTwo flex items-center justify-center gap-1"
         >
           <span className="gradient-accent-color font-bold">Contact us</span>
