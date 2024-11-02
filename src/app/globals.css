@@ -194,3 +194,7 @@ padding-left: 12px;
 .random-bg {
   background-color: hsl(calc(360 * var(--random-color)), 70%, 60%);
 }
+
+.write .ql-editor{
+  font-size: 1.2rem !important;
+}

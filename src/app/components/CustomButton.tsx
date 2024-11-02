@@ -49,7 +49,7 @@ const CustomButton = ({
           onClick={handleOnClick}
           className="customButtonTwo flex items-center justify-center gap-1"
         >
-          <span className="gradient-accent-color font-bold">Contact us</span>
+          <span className="gradient-accent-color font-bold">{text}</span>
           {icon && !isLoading && <Image src={icon} alt={text} />}
         </button>
       )}
@@ -59,7 +59,7 @@ const CustomButton = ({
           onClick={handleOnClick}
           className="customButtonThree flex items-center justify-center gap-1"
         >
-          <span className="gradient-accent-color font-bold">Contact us</span>
+          <span className="gradient-accent-color font-bold">{text}</span>
           {isLoading && (
             <Image
               src={RefreshIcon}
