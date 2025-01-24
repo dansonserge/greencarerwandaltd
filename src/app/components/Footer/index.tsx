@@ -18,14 +18,20 @@ function Footer() {
         <hr className="bg-[#ddd] h-[1.5px]" />
         <div className="flex flex-col gap-5 md:flex-row md:justify-between md:px-20 py-6 items-center">
           <div className="flex gap-8">
-            <Link href={"#"}>
+            <Link href={"https://x.com/GREENCARE2016"} target="_blank">
               <Image src={TwitterLogo} alt="twitter" width={50} />
             </Link>
-            <Link href={"#"}>
+            <Link
+              href={"https://www.instagram.com/greencarerwandaltd9/"}
+              target="_blank"
+            >
               <Image src={InstagramLogo} alt="instagram" width={50} />
             </Link>
 
-            <Link href={"#"}>
+            <Link
+              href={"https://www.youtube.com/@greencarerwandaltd2788"}
+              target="_blank"
+            >
               <Image src={Youtube} alt="youtube" width={50} />{" "}
             </Link>
           </div>

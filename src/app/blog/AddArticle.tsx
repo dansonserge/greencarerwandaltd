@@ -5,6 +5,9 @@ import Image from "next/image";
 import "react-quill/dist/quill.bubble.css";
 import ReactQuill, { Quill } from "react-quill";
 import CustomButton from "../components/CustomButton";
+import EditorJS from "@editorjs/editorjs";
+import { tools } from "./tools.components";
+import ImageUpload from "./ImageUpload";
 
 const AddArticle = ({
   setIsEditMode,
@@ -21,12 +24,30 @@ const AddArticle = ({
     author: {};
   }
 
+  const blogStructure: Blog = {
+    title: "",
+    banner: "",
+    content: [],
+    tags: [],
+    author: {},
+  };
+
+  const [blog, setBlog] = useState<Blog>(blogStructure);
+
+  const editor = new EditorJS({
+    holderId: "textEditor",
+    tools: tools,
+    placeholder: "Tell your story",
+    data: undefined,
+  });
+
   return (
-    <div className="flex flex-col px-12 gap-y-5">
+    <div className="flex flex-col px-12 gap-y-5 w-3/4 m-auto">
       <div className="flex gap-10 pt-2 justify-between">
         <p className="gradient-accent-color font-extrabold text-4xl">
           Create an article
         </p>
+
         <div className="flex gap-x-3">
           <span className=" cursor-pointer">
             {/* <Image
@@ -53,6 +74,8 @@ const AddArticle = ({
         </div>
       </div>
       <div className="flex flex-col gap-y-3">
+        <ImageUpload />
+
         <span className="px-3">
           <input
             type="text"
@@ -60,6 +83,10 @@ const AddArticle = ({
             className="text-2xl outline-none w-full"
           />
         </span>
+        <hr className="w-full opacity-80" />
+
+        {/*  <div id="textEditor" className=""></div>
+        <hr className="w-full opacity-80" /> */}
 
         <ReactQuill
           theme="bubble"
