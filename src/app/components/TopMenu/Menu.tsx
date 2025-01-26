@@ -1,7 +1,7 @@
 //import Link from "next/link";
 import { useEffect, useState } from "react";
-import { navLinks } from "./data/navLinks";
-import * as Scroll from "react-scroll";
+import { MenuItem, navLinks } from "./data/navLinks";
+
 import {
   Link,
   Button,
@@ -13,10 +13,16 @@ import {
 } from "react-scroll";
 
 const Menu = () => {
-  const [activeRoute, setActiveRoute] = useState<string>("/");
+  const [isActiveLinkHome, setIsActiveHomeLink] = useState(true);
+  const [activeRoute, setActiveRoute] = useState<MenuItem>(navLinks[0]);
 
   useEffect(() => {
-    console.log("selected",activeRoute);
+    const link = window.location.pathname;
+
+    const activeLink = navLinks.filter((i) => i.route === link);
+    activeLink.length > 0
+      ? setIsActiveHomeLink(true)
+      : setIsActiveHomeLink(false);
   }, [activeRoute]);
 
   return (
@@ -27,25 +33,29 @@ const Menu = () => {
             <li
               key={index}
               className={`mx-4 relative p-2 border-b-4 ${
-                activeRoute === link.route
+                activeRoute.route === link.route
                   ? " border-green text-dark-blue font-bold"
                   : "border-transparent"
               }`}
             >
-              <Link
-                to={link.route}
-                spy={true}
-                smooth={true}
-                offset={50}
-                duration={200}
-                onSetActive={() => {
-                  setActiveRoute(link.route);
-                  console.log("link",link.route);
-                }}
-                className="cursor-pointer"
-              >
-                {link.name}{" "}
-              </Link>
+              {isActiveLinkHome === true ? (
+                <Link
+                  to={link.route}
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={200}
+                  onSetActive={() => {
+                    setActiveRoute(link);
+                    console.log("link", link.route);
+                  }}
+                  className="cursor-pointer"
+                >
+                  {link.name}{" "}
+                </Link>
+              ) : (
+                <a href={`${link.route}`}>{link.name}</a>
+              )}
             </li>
           );
         })}

@@ -6,28 +6,47 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:mysql": "dotenv -e .env.sample -- npx prisma migrate deploy",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate-dev": "prisma migrate dev",
+    "prisma:migrate-prod": "prisma migrate deploy"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.30.6",
+    "@editorjs/embed": "^2.7.6",
+    "@editorjs/image": "^2.10.0",
+    "@editorjs/nested-list": "^1.4.3",
+    "@editorjs/table": "^2.4.2",
+    "@editorjs/underline": "^1.2.1",
+    "@prisma/client": "^6.2.1",
     "@types/node": "20.4.5",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
+    "bcrypt": "^5.1.1",
     "eslint": "8.45.0",
-    "eslint-config-next": "13.4.12",
+    "eslint-config-next": "^14.2.23",
     "gsap": "^3.12.2",
-    "next": "13.4.12",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "next": "^14.2.23",
     "nodemailer": "^6.9.4",
     "postcss": "8.4.27",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18",
+    "react-dom": "18",
     "react-hot-toast": "^2.4.1",
+    "react-quill": "^2.0.0",
     "react-scroll": "^1.8.9",
+    "react-twitter-widgets": "^1.11.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/react-scroll": "^1.8.7"
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/react-scroll": "^1.8.7",
+    "prisma": "^6.2.1"
   }
 }
