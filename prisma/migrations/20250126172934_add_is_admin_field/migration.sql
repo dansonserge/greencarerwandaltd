@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `User` MODIFY `isAdmin` INTEGER NOT NULL DEFAULT 1;
