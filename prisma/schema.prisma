@@ -14,15 +14,19 @@ model User {
   password  String
   name      String?
   isAdmin   Int @default(1)
+  status  Int @default(1) //1=active, 2=disabled, 3=deleted
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  posts Post[]
 }
 
-model Article {
+model Post {
   id        Int      @id @default(autoincrement())
   title     String
-  content   String
-  imageUrl  String?
+  content   String   @db.Text
+  image     String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  status Int @default(2) //1=published, 2=draft , 3=deleted
 }
