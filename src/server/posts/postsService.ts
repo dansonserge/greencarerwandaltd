@@ -42,8 +42,7 @@ async function uploadToCloudinary(postImage: File) {
     .update(paramsToSign)
     .digest("hex");
 
-
-    const formData = new FormData();
+  const formData = new FormData();
   formData.append('file', postImage);
   formData.append('timestamp', timestamp.toString());
   formData.append('api_key', process.env.CLOUDINARY_API_KEY??"");
