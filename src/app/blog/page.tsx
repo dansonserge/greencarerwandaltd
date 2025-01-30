@@ -8,9 +8,11 @@ import SamplePic from "@public/assets/samplePhoto.jpg";
 
 import Image from "next/image";
 import ArticleListItem from "./ArticleListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddArticle from "./AddArticle";
 import Articles from "./Articles";
+import { UserResponse } from "../components/interfaces/UserInterface";
+import AddPost from "./AddPost";
 
 const Blog = () => {
   const router = useRouter();
@@ -25,7 +27,7 @@ const Blog = () => {
   return (
     <Layout>
       {isEditMode ? (
-        <AddArticle setIsEditMode={toggleIsEditor} />
+        <AddPost setIsEditMode={toggleIsEditor} />
       ) : (
         <Articles setIsEditMode={toggleIsEditor} />
       )}

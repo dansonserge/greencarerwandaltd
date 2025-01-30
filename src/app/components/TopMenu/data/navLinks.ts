@@ -8,32 +8,27 @@ export interface MenuItem {
 export const navLinks : MenuItem[]= [
     {
         name: 'Home',
-        route: '/',
+        route: '/#/home',
         isHomeLink: true
     },
     {
         name: 'Products',
-        route: '/products',
+        route: '/#/products',
         isHomeLink: true
     },
     {
         name: 'Services',
-        route: '/services',
+        route: '/#/services',
         isHomeLink: true
     },
     {
         name: 'About us',
-        route: '/about-us',
+        route: '/#/about-us',
         isHomeLink: true
     },
     {
         name: 'Contact us',
-        route: '/contact-us',
+        route: '/#/contact-us',
         isHomeLink: true
     },
-    {
-        name: 'Blog',
-        route: '/blog',
-        isHomeLink: false
-    }
 ];

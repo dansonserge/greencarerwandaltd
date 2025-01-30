@@ -34,6 +34,11 @@ export const POST = async (req: NextRequest) => {
 export const GET = async (_: any) => {
   try {
     const posts = await prisma.post.findMany({
+
+      orderBy: {
+        createdAt: "desc",
+      },
+
       include: {
         user: {
           select: { name: true, email: true },

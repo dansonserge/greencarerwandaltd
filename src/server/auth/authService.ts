@@ -15,7 +15,7 @@ export const loginService = async (email: string, password: string) => {
     const token = generateJWT(user);
     return { token, user };
   } catch (error) {
-    throw new Error(`Login Error: ${error}`);
+    throw new Error(`${error}`);
   }
 };
 

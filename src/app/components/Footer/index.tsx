@@ -10,8 +10,9 @@ import Youtube from "@public/assets/youtube.svg";
 import { footerLinks } from "./footerMenu";
 import ContactUsForm from "./ContactUsForm";
 import ContactUsSection from "./ContactUsSection";
+import { UserResponse } from "../interfaces/UserInterface";
 
-function Footer() {
+function Footer({ userDetails }: { userDetails: UserResponse | undefined }) {
   return (
     <footer id="/contact-us">
       <div className="bg-[#F1F3F4]">
@@ -36,13 +37,28 @@ function Footer() {
             </Link>
           </div>
           <div className="flex gap-8 text-xs md:text-lg md:mx-0">
-            {footerLinks.map((link, index) => {
+            {/*    {footerLinks.map((link, index) => {
               return (
                 <Link key={index} href={"#"}>
                   {link.name}
                 </Link>
               );
-            })}
+            })} */}
+            <a href="/">Home</a>
+            <a href="/#/about-us">About us</a>
+            <a href="/#/service">Products</a>
+            <a href="/blog">Blog</a>
+
+            {!userDetails?.token ? (
+              <a href="/login">Login</a>
+            ) : (
+              <a
+                href="/login"
+                onClick={() => localStorage.removeItem("user-details")}
+              >
+                Logout
+              </a>
+            )}
           </div>
         </div>
         <div className=" flex justify-between px-5 text-xs md:text-lg md:px-20 py-5 items-center bg-white">
