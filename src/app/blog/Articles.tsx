@@ -6,11 +6,14 @@ import { UserResponse } from "../components/interfaces/UserInterface";
 import { Post, PostsResponse } from "../components/interfaces/PostInterface";
 import PostComponent from "./PostComponent";
 import { useFetchPosts } from "./hooks/useFetchPosts";
+import { PackageOpen } from "lucide-react";
 
 const Articles = ({
-  setIsEditMode,
+  setDisplayMode,
+  setSelectedPost,
 }: {
-  setIsEditMode: Dispatch<SetStateAction<boolean>>;
+  setDisplayMode: Dispatch<SetStateAction<string>>;
+  setSelectedPost: Dispatch<SetStateAction<Post | undefined>>;
 }) => {
   const [userDetails, setUserDetails] = useState<UserResponse | undefined>();
   useEffect(() => {
@@ -42,16 +45,16 @@ const Articles = ({
 
   const { posts, loading, error } = useFetchPosts();
 
-  if (loading) {
+  /*  if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
-  }
+  } */
 
   return (
-    <div className="flex px-20 gap-10 pt-5">
+    <div className="flex px-20 pt-5">
       <div className="w-3/4">
         <div className="flex justify-between px-8">
           <p className="gradient-accent-color font-extrabold text-5xl">
@@ -63,15 +66,28 @@ const Articles = ({
                 type="normal-right"
                 text="Add an article"
                 isLoading={false}
-                handleOnClick={() => setIsEditMode(true)}
+                handleOnClick={() => setDisplayMode("Create")}
               />
             )}
           </div>
         </div>
 
         <div className="flex flex-col mt-10 gap-8 mb-6 overflow-auto h-[calc(100vh-100px)]">
-          {posts.map((post) => (
-            <PostComponent key={post.id} post={post} />
+          {posts.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full">
+              <PackageOpen className="w-24 h-24 text-gray-500" />{" "}
+              {/* 6xl is roughly 24rem */}
+              <p className="mt-4 text-lg text-gray-600">No posts created yet</p>
+            </div>
+          )}
+
+          {posts.map((post: any) => (
+            <PostComponent
+              key={post.id}
+              post={post}
+              setDisplayMode={setDisplayMode}
+              setSelectedPost={setSelectedPost}
+            />
           ))}
           {/*  <ArticleListItem />
 

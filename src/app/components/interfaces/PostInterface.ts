@@ -12,6 +12,7 @@ export interface Post {
   userId: number;
   status: number;
   user: User;
+  slug: string;
 }
 
 export interface PostsResponse {

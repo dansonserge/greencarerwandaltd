@@ -22,7 +22,9 @@ CREATE TABLE `Post` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `userId` INTEGER NOT NULL,
     `status` INTEGER NOT NULL DEFAULT 2,
+    `slug` VARCHAR(300) NOT NULL DEFAULT '',
 
+    UNIQUE INDEX `Post_slug_key`(`slug`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

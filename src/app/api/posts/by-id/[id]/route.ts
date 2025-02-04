@@ -1,11 +1,13 @@
 import prisma from "@/DB/db.config";
+import { updatePost } from "@/server/posts/postsService";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (_: any, { params } : any) => {
+export const GET = async (req: Request, { params }: { params: { id: string } }) => {
+  const { id } = params;
   try {
     const post = await prisma.post.findUnique({
       where: {
-        id: Number(params.id),
+        id: Number(id),
       },
       include: {
         user: {
@@ -27,7 +29,7 @@ export const GET = async (_: any, { params } : any) => {
         });
   }
 };
-export const DELETE = async (_:any, { params }:any) => {
+export const DELETE = async (req: Request, { params }: { params: { id: string } }) => {
   try {
     const post = await prisma.post.delete({
       where: {
@@ -52,16 +54,12 @@ export const DELETE = async (_:any, { params }:any) => {
 export const PATCH = async (req: NextRequest, {params}: any) => {
 
   try {
-     const formData = await req.formData();
+    const formData = await req.formData();
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
+    const image = formData.get("image") as File;
+    const update = updatePost({title, content, id: params.id, image});
 
-
-    const update = await prisma.post.update({
-      where: { id: Number(params.id) },
-      data: { content, title },
-      select: { id: true, content: true, title: true },
-    });
     if (!update) {
       return NextResponse.json({
         status: 400,
@@ -87,4 +85,7 @@ export const PATCH = async (req: NextRequest, {params}: any) => {
 function uploadToCloudinary(image: any) {
     throw new Error("Function not implemented.");
 }
+
+
+
 

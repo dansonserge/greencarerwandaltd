@@ -28,5 +28,6 @@ model Post {
   createdAt DateTime @default(now())
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
-  status Int @default(2) //1=published, 2=draft , 3=deleted
+  status    Int @default(2) //1=published, 2=draft , 3=deleted
+  slug      String  @default("") @db.VarChar(300) @unique
 }

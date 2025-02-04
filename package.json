@@ -12,6 +12,12 @@
     "prisma:migrate-dev": "prisma migrate dev",
     "prisma:migrate-prod": "prisma migrate deploy"
   },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0",
+    "yarn": "please-use-pnpm",
+    "npm": "please-use-pnpm"
+  },
   "dependencies": {
     "@editorjs/editorjs": "^2.30.6",
     "@editorjs/embed": "^2.7.6",
@@ -32,6 +38,7 @@
     "gsap": "^3.12.2",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.474.0",
+    "moment": "^2.30.1",
     "mysql2": "^3.12.0",
     "next": "^14.2.23",
     "nodemailer": "^6.10.0",

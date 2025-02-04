@@ -19,15 +19,20 @@ export const createPost = async (post: {
         throw new Error(`Failed to upload image to images server`);
     }
 
+    let slug = `${post.title.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 50)}-${Date.now()}`;
+
+
     return await prisma.post.create({
       data: {
         title: post.title,
         content: post.content,
         image: imageUrl, // Use the returned image URL
         userId: post.userId,
+        slug: slug
       },
     });
   } catch (error) {
+    console.log(error)
     throw new Error(`Error creating a post : ${error}`);
   }
 };
@@ -64,4 +69,37 @@ async function uploadToCloudinary(postImage: File) {
     );
     throw error;
   }
+
+
 }
+
+
+export const updatePost = async (post: {
+  title: string;
+  content: string;
+  id: number;
+  image: File;
+}) => {
+  try {
+    if (!post.title || !post.content || !post.id || !post.image) {
+      throw new Error(`Please fill all the fields`);
+    }
+
+    const imageUrl = await uploadToCloudinary(post.image);
+
+    if(!imageUrl){
+        throw new Error(`Failed to upload image to images server`);
+    }
+
+    return await prisma.post.update({
+      where: { id: Number(post.id) },
+      data: {
+        title: post.title,
+        content: post.content,
+        image: imageUrl,
+      },
+    });
+  } catch (error) {
+    throw new Error(`Error creating a post : ${error}`);
+  }
+};
