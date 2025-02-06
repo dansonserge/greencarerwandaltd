@@ -8,6 +8,8 @@ import { useFetchPosts } from "./hooks/useFetchPosts";
 import { Post } from "../components/interfaces/PostInterface";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { ImagePlus } from "lucide-react";
+import toast from "react-hot-toast";
+import { getToken } from "@/lib/jwt";
 
 // Dynamically import ReactQuill to prevent SSR errors
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -54,6 +56,7 @@ const EditPost = ({
 }) => {
   const [description, setDescription] = useState(selectedPost?.content);
   const [id, setId] = useState(selectedPost?.id);
+  const [userId, setUserId] = useState(selectedPost?.userId);
   const [title, setTitle] = useState(selectedPost?.title);
   const [selectedImage, setSelectedImage] = useState(selectedPost?.image);
   const [image, setImage] = useState<File | null>(null);
@@ -62,27 +65,28 @@ const EditPost = ({
   const [showImageEditor, setShowImageEditor] = useState<boolean>(false);
 
   const handleSubmit = async () => {
-    if (!title || !description || !image) {
-      alert("Please fill in all fields and upload an image.");
-      return;
-    }
-
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", description);
-    formData.append("userId", "1");
-    formData.append("image", image);
+    title && formData.append("title", title);
+    description && formData.append("content", description);
+    image && formData.append("image", image);
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/posts/${id}`, {
+      const token = getToken();
+      if (!token) throw new Error("User not authenticated");
+
+      const myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
+
+      const response = await fetch(`/api/posts/by-id/${id}`, {
         // Ensure leading `/`
         method: "PATCH",
         body: formData,
+        headers: myHeaders,
       });
       const result = await response.text();
       console.log("Post submitted successfully:", result);
-      fetchPosts();
+
       setDisplayMode("List");
     } catch (error) {
       console.error("Error submitting post:", error);

@@ -63,7 +63,9 @@ function Footer({ userDetails }: { userDetails: UserResponse | undefined }) {
         </div>
         <div className=" flex justify-between px-5 text-xs md:text-lg md:px-20 py-5 items-center bg-white">
           <div>
-            <Link href={"#"}>GreenCare Rwanda Ltd’s copyright 2023</Link>
+            <Link href={"#"}>
+              GreenCare Rwanda Ltd’s copyright {new Date().getFullYear()}{" "}
+            </Link>
           </div>
           <div>
             <Link href={"#"}>Terms of privacy</Link>

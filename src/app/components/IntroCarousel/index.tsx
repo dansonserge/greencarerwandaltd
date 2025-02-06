@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 const IntroCarousel = () => {
   return (
-    <div className="flex" id="/">
+    <div className="flex" id="/home">
       <span className="hidden lg:block">
         <DotsSelector />
       </span>
@@ -30,11 +30,11 @@ const IntroCarousel = () => {
             plants to promote circular economy and environmental protection.
           </div>
           <div className="flex gap-4">
-            <a href="/about">
+            <a href="/blog/about-us">
               <CustomButton text="About us" type={"normal"} />
             </a>
 
-            <a href="contact">
+            <a href="/#/contact-us">
               <CustomButton
                 text="Contact us"
                 type={"gradient"}

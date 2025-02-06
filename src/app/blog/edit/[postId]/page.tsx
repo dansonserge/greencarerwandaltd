@@ -13,6 +13,7 @@ import CustomButton from "../../../components/CustomButton";
 import { useFetchPosts } from "../../hooks/useFetchPosts";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
+import { getToken } from "@/lib/jwt";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const EditPost = ({ postId }: { postId: string }) => {
@@ -44,8 +45,16 @@ const EditPost = ({ postId }: { postId: string }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/posts/${postId}`, {
+      const token = getToken();
+      if (!token) throw new Error("User not authenticated");
+
+      const response = await fetch(`/api/posts/by-id/${postId}`, {
         method: "PATCH",
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         body: formData,
       });
       const result = await response.text();

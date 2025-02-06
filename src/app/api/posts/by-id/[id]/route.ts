@@ -1,4 +1,5 @@
 import prisma from "@/DB/db.config";
+import { authenticateUser } from "@/lib/auth";
 import { updatePost } from "@/server/posts/postsService";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -30,6 +31,9 @@ export const GET = async (req: Request, { params }: { params: { id: string } }) 
   }
 };
 export const DELETE = async (req: Request, { params }: { params: { id: string } }) => {
+   const res = await authenticateUser(req);
+    if (res?.ok===false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
   try {
     const post = await prisma.post.delete({
       where: {
@@ -52,6 +56,9 @@ export const DELETE = async (req: Request, { params }: { params: { id: string } 
 };
 
 export const PATCH = async (req: NextRequest, {params}: any) => {
+   const res = await authenticateUser(req);
+    if (res?.ok===false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
 
   try {
     const formData = await req.formData();

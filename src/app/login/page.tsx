@@ -9,6 +9,7 @@ import BannerImageOne from "@public/assets/BannerImageOne.svg";
 import { useState } from "react";
 import CustomButton from "@/app/components/CustomButton";
 import Alert from "../components/Tools/Alert";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const router = useRouter();
@@ -78,17 +79,14 @@ const Login = () => {
 
     const res = await fetch("api/auth/login", requestOptions)
       .then((response) => {
+        console.log(response);
         if (response.status == 400) {
           console.log("test");
           response.json().then((data) => {
-            setAlert({
-              title: "Login Failed",
-              message: data.message,
-              isError: true,
-              showAlert: true,
-            });
+            toast.error(data.message);
           });
         } else {
+          toast.success("Succcessfully authenticated!");
           response.json().then((data) => {
             setAlert({
               title: "Success",
@@ -97,9 +95,7 @@ const Login = () => {
               showAlert: true,
             });
 
-            console.log(data);
             localStorage.setItem("user-details", JSON.stringify(data));
-
             router.push("/blog");
           });
         }
@@ -124,9 +120,9 @@ const Login = () => {
             Login
           </p>
 
-          {alert.showAlert && (
+          {/* {alert.showAlert && (
             <Alert title={alert.title} message={alert.message} />
-          )}
+          )} */}
 
           <div className="flex flex-col gap-3">
             <label htmlFor="email" className="ml-2 font-[700]">

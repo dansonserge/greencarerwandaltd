@@ -5,6 +5,8 @@ import dynamic from "next/dynamic"; // Dynamic import to fix SSR issues
 import "react-quill/dist/quill.bubble.css";
 import CustomButton from "../components/CustomButton";
 import { useFetchPosts } from "./hooks/useFetchPosts";
+import toast from "react-hot-toast";
+import { getToken } from "@/lib/jwt";
 
 // Dynamically import ReactQuill to prevent SSR errors
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -83,7 +85,7 @@ const AddPost = ({
 
   const handleSubmit = async () => {
     if (!title || !description || !image) {
-      alert("Please fill in all fields and upload an image.");
+      toast.error("Please fill in all fields and upload an image.");
       return;
     }
 
@@ -95,18 +97,22 @@ const AddPost = ({
 
     setLoading(true);
     try {
+      const token = getToken();
+      if (!token) throw new Error("User not authenticated");
+
+      const myHeaders = new Headers();
+      myHeaders.append("Authorization", `Bearer ${token}`);
       const response = await fetch("/api/posts", {
         // Ensure leading `/`
         method: "POST",
         body: formData,
+        headers: myHeaders,
       });
       const result = await response.text();
-      console.log("Post submitted successfully:", result);
-      fetchPosts();
+      toast.success("Post submitted successfully");
       setDisplayMode("List");
     } catch (error) {
-      console.error("Error submitting post:", error);
-      alert("Failed to submit post. Please try again.");
+      toast.error("Failed to submit post. Please try again");
     } finally {
       setLoading(false);
     }

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CustomButton from "../CustomButton";
 import SendMessageIcon from "@public/assets/send-message-icon.svg";
+import toast from "react-hot-toast";
 
 function ContactUsForm() {
   interface FormDataType {
@@ -40,8 +41,38 @@ function ContactUsForm() {
 
   const { values, isLoading } = formData;
 
-  const handleSendEmail = () => {
-    console.log("sending the email");
+  const handleSendEmail = async () => {
+    setFormData((prev) => ({ ...prev, isLoading: true }));
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      name: values.names,
+      email: values.email,
+      phone: values.phone,
+      message: values.message,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch("api/contact", requestOptions);
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+      toast.success("Message sent successfully!");
+      setFormData({ values: initValues, isLoading: false }); // Reset form
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.");
+      console.error("Error sending email:", error);
+      setFormData((prev) => ({ ...prev, isLoading: false }));
+    }
   };
 
   const onBlurHandler = ({ target }) =>
@@ -49,97 +80,50 @@ function ContactUsForm() {
 
   const handleChange = ({ target }) =>
     setFormData((prev) => ({
-      ...prev.values,
-      values: { ...prev.values, [target.name]: target.value },
-      isLoading: true,
-    }));
-
-  const onSubmit = async () => {
-    setFormData((prev) => ({
       ...prev,
-      isLoading: true,
+      values: { ...prev.values, [target.name]: target.value },
     }));
-  };
 
   return (
-    <div className="bg-white px-4 md:px-10 py-5  contactUsForm w-full lg:w-5/6">
+    <div className="bg-white px-4 md:px-10 py-5 contactUsForm w-full lg:w-5/6">
       <p className="ml-2 gradient-accent-color font-[700] text-2xl py-4">
         Contact us now
       </p>
       <div className="flex flex-col gap-5">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="ml-2 font-[700]">
-            Name <span className=" text-red-400">*</span>
-          </label>
-          <input
-            type="text"
-            name="names"
-            className={`contactUsInput border ${
-              touched.names && values.names.length === 0 && "border-red-400"
-            }`}
-            value={values.names}
-            onChange={handleChange}
-            onBlur={onBlurHandler}
-          ></input>
-          {touched.names && values.names.length === 0 && (
-            <span className="ml-2 text-red-400">Required</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="ml-2 font-[700]">
-            Email <span className=" text-red-400">*</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            className={`contactUsInput border ${
-              touched.email && values.email.length === 0 && "border-red-400"
-            }`}
-            value={values.email}
-            onChange={handleChange}
-            onBlur={onBlurHandler}
-          ></input>
-          {touched.email && values.email.length === 0 && (
-            <span className="ml-2 text-red-400">Required</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="ml-2 font-[700]">
-            Phone <span className=" text-red-400">*</span>
-          </label>
-          <input
-            type="phone"
-            name="phone"
-            className={`contactUsInput border ${
-              touched.phone && values.phone.length === 0 && "border-red-400"
-            }`}
-            value={values.phone}
-            onChange={handleChange}
-            onBlur={onBlurHandler}
-          ></input>
-          {touched.phone && values.phone.length === 0 && (
-            <span className="ml-2 text-red-400">Required</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="ml-2 font-[700]">
-            Message <span className=" text-red-400">*</span>
-          </label>
-          <textarea
-            name="message"
-            className={`contactUsTeaxtArea border ${
-              touched.message && values.message.length === 0 && "border-red-400"
-            }`}
-            value={values.message}
-            onChange={handleChange}
-            onBlur={onBlurHandler}
-          ></textarea>
-          {touched.message && values.message.length === 0 && (
-            <span className="ml-2 text-red-400">Required</span>
-          )}
-        </div>
-
-        <div className="ml-auto" onClick={() => handleSendEmail()}>
+        {["names", "email", "phone", "message"].map((field, index) => (
+          <div key={index} className="flex flex-col gap-2">
+            <label className="ml-2 font-[700]">
+              {field.charAt(0).toUpperCase() + field.slice(1)}{" "}
+              <span className=" text-red-400">*</span>
+            </label>
+            {field !== "message" ? (
+              <input
+                type={field === "email" ? "email" : "text"}
+                name={field}
+                className={`contactUsInput border ${
+                  touched[field] && !values[field] && "border-red-400"
+                }`}
+                value={values[field]}
+                onChange={handleChange}
+                onBlur={onBlurHandler}
+              />
+            ) : (
+              <textarea
+                name={field}
+                className={`contactUsTeaxtArea border ${
+                  touched[field] && !values[field] && "border-red-400"
+                }`}
+                value={values[field]}
+                onChange={handleChange}
+                onBlur={onBlurHandler}
+              />
+            )}
+            {touched[field] && !values[field] && (
+              <span className="ml-2 text-red-400">Required</span>
+            )}
+          </div>
+        ))}
+        <div className="ml-auto" onClick={handleSendEmail}>
           <CustomButton
             type="normal-right"
             text="Send"

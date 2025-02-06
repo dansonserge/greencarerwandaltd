@@ -1,7 +1,11 @@
+import { authenticateUser } from "@/lib/auth";
 import { resetPwdService } from "@/server/auth/authService";
 import { NextResponse, NextRequest } from "next/server";
 
 export const PATCH = async (req: NextRequest) => {
+   const res = await authenticateUser(req);
+    if (res?.ok===false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
   try {
     const { userId, password } = await req.json();
     const data = await resetPwdService(userId, password);

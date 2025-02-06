@@ -65,12 +65,13 @@ const PostPage = () => {
           </div>
           <div className="pt-6">
             <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-            <div className="relative w-full h-96 mb-6">
+            <div className="relative w-full h-96 mb-6 bg-gray-200 flex items-center justify-center">
               <Image
                 src={post.image}
                 alt={post.title}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain" // Ensures full image is visible
+                className="bg-gray-200"
               />
             </div>
             <ReactQuill
