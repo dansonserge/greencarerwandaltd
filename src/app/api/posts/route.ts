@@ -1,8 +1,13 @@
 import { createPost } from "@/server/posts/postsService";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/DB/db.config";
+import upload, { uploadImage } from "@/server/upload/uploadService";
+import { authenticateUser } from "@/lib/auth";
 
-export const POST = async (req: NextRequest) => {
+ export const POST = async (req: NextRequest) => {
+   const res = await authenticateUser(req);
+    if (res?.ok===false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
@@ -31,9 +36,17 @@ export const POST = async (req: NextRequest) => {
   }
 };
 
-export const GET = async (_: any) => {
+
+
+
+export const GET = async () => {
   try {
     const posts = await prisma.post.findMany({
+
+      orderBy: {
+        createdAt: "desc",
+      },
+
       include: {
         user: {
           select: { name: true, email: true },

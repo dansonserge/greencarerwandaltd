@@ -8,26 +8,37 @@ import SamplePic from "@public/assets/samplePhoto.jpg";
 
 import Image from "next/image";
 import ArticleListItem from "./ArticleListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddArticle from "./AddArticle";
 import Articles from "./Articles";
+import { UserResponse } from "../components/interfaces/UserInterface";
+import AddPost from "./AddPost";
+import EditPost from "./EditPost";
+import { Post } from "../components/interfaces/PostInterface";
 
 const Blog = () => {
   const router = useRouter();
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [displayMode, setDisplayMode] = useState<string>("List");
+  const [selectedPost, setSelectedPost] = useState<Post | undefined>();
+  //List=> show all posts, Edit=> edit a post, Create=> create a port
   const searchParams = useSearchParams();
-  const toggleIsEditor = () => {
+  const toggleIsEditor = (modeName: string) => {
     console.log(searchParams);
     router.push("/blog?isEditor=false");
-    setIsEditMode(!isEditMode);
+    setDisplayMode(modeName);
   };
 
   return (
     <Layout>
-      {isEditMode ? (
-        <AddArticle setIsEditMode={toggleIsEditor} />
+      {displayMode === "Create" ? (
+        <AddPost setDisplayMode={setDisplayMode} />
+      ) : displayMode === "Edit" ? (
+        <EditPost setDisplayMode={setDisplayMode} selectedPost={selectedPost} />
       ) : (
-        <Articles setIsEditMode={toggleIsEditor} />
+        <Articles
+          setDisplayMode={setDisplayMode}
+          setSelectedPost={setSelectedPost}
+        />
       )}
     </Layout>
   );

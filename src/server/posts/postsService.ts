@@ -1,6 +1,8 @@
 import prisma from "@/DB/db.config";
 import axios from "axios";
 import crypto from "crypto";
+import { NextResponse } from "next/server";
+import upload, { uploadImage } from "@/server/upload/uploadService";
 
 export const createPost = async (post: {
   title: string;
@@ -14,10 +16,18 @@ export const createPost = async (post: {
     }
 
     const imageUrl = await uploadToCloudinary(post.image);
+    //const imageUrl = await uploadImage(post.image);
 
-    if(!imageUrl){
-        throw new Error(`Failed to upload image to images server`);
+    if (!imageUrl) {
+      throw new Error(`Failed to upload image to images server`);
     }
+
+    let slug = `${post.title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .slice(0, 50)}-${Date.now()}`;
 
     return await prisma.post.create({
       data: {
@@ -25,9 +35,11 @@ export const createPost = async (post: {
         content: post.content,
         image: imageUrl, // Use the returned image URL
         userId: post.userId,
+        slug: slug,
       },
     });
   } catch (error) {
+    console.log(error);
     throw new Error(`Error creating a post : ${error}`);
   }
 };
@@ -42,12 +54,11 @@ async function uploadToCloudinary(postImage: File) {
     .update(paramsToSign)
     .digest("hex");
 
-
-    const formData = new FormData();
-  formData.append('file', postImage);
-  formData.append('timestamp', timestamp.toString());
-  formData.append('api_key', process.env.CLOUDINARY_API_KEY??"");
-  formData.append('signature', signature);
+  const formData = new FormData();
+  formData.append("file", postImage);
+  formData.append("timestamp", timestamp.toString());
+  formData.append("api_key", process.env.CLOUDINARY_API_KEY ?? "");
+  formData.append("signature", signature);
 
   try {
     // POST request to Cloudinary
@@ -57,7 +68,6 @@ async function uploadToCloudinary(postImage: File) {
     );
 
     return response.data.secure_url; // Return the image URL
-
   } catch (error: any) {
     console.error(
       "Error uploading to Cloudinary:",
@@ -66,3 +76,48 @@ async function uploadToCloudinary(postImage: File) {
     throw error;
   }
 }
+
+export const updatePost = async (post: {
+  title: string;
+  content: string;
+  id: number;
+  image: File;
+}) => {
+  try {
+
+    if (post.image) {
+      const imageUrl = await uploadToCloudinary(post.image);
+
+      if (!imageUrl) {
+        return NextResponse.json({
+          status: 400,
+          message:
+            "An error occurred while processing your request. Please try again.",
+        });
+      }
+    }
+
+    // Prepare the data to update
+    const postData = {
+      title: post.title,
+      content: post.content,
+    };
+
+    // If the image was successfully uploaded, add it to the update data
+    if (post.image) {
+      postData.image = await uploadToCloudinary(post.image);
+    }
+
+    return await prisma.post.update({
+      where: { id: Number(post.id) },
+      data: postData,
+    });
+  } catch (error) {
+    //throw new Error(`Error creating a post : ${error}`);
+    return NextResponse.json({
+      status: 400,
+      message:
+        "An error occurred while processing your request. Please try again.",
+    });
+  }
+};

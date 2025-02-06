@@ -6,6 +6,7 @@ import "react-quill/dist/quill.bubble.css";
 import ReactQuill, { Quill } from "react-quill";
 import CustomButton from "../components/CustomButton";
 import EditorJS from "@editorjs/editorjs";
+
 import { tools } from "./tools.components";
 import ImageUpload from "./ImageUpload";
 

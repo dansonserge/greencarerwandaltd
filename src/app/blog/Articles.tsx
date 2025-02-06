@@ -1,32 +1,95 @@
 "use client";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import CustomButton from "../components/CustomButton";
 import ArticleListItem from "./ArticleListItem";
+import { UserResponse } from "../components/interfaces/UserInterface";
+import { Post, PostsResponse } from "../components/interfaces/PostInterface";
+import PostComponent from "./PostComponent";
+import { useFetchPosts } from "./hooks/useFetchPosts";
+import { PackageOpen } from "lucide-react";
 
 const Articles = ({
-  setIsEditMode,
+  setDisplayMode,
+  setSelectedPost,
 }: {
-  setIsEditMode: Dispatch<SetStateAction<boolean>>;
+  setDisplayMode: Dispatch<SetStateAction<string>>;
+  setSelectedPost: Dispatch<SetStateAction<Post | undefined>>;
 }) => {
+  const [userDetails, setUserDetails] = useState<UserResponse | undefined>();
+  useEffect(() => {
+    const storedUserDetails = localStorage.getItem("user-details");
+    if (storedUserDetails) {
+      setUserDetails(JSON.parse(storedUserDetails));
+    }
+  }, []);
+
+  // const [posts, setPosts] = useState<Post[]>([]);
+  // const [loading, setLoading] = useState<boolean>(true);
+  // const [error, setError] = useState<string | null>(null);
+
+  /*  const fetchPosts = async () => {
+    try {
+      const response = await fetch("api/posts");
+      const result: PostsResponse = await response.json();
+      if (result.status === 200) {
+        setPosts(result.data); // Set posts data
+      } else {
+        setError(result.message); // Handle error if status is not 200
+      }
+    } catch (error) {
+      setError("Failed to fetch posts");
+    } finally {
+      setLoading(false); // Set loading to false after fetch attempt
+    }
+  }; */
+
+  const { posts, loading, error } = useFetchPosts();
+
+  /*  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  } */
+
   return (
-    <div className="flex px-20 gap-10 pt-5">
+    <div className="flex px-20 pt-5">
       <div className="w-3/4">
         <div className="flex justify-between px-8">
           <p className="gradient-accent-color font-extrabold text-5xl">
             Articles
           </p>
           <div className="flex">
-            <CustomButton
-              type="normal-right"
-              text="Add an article"
-              isLoading={false}
-              handleOnClick={() => setIsEditMode(true)}
-            />
+            {userDetails?.token && (
+              <CustomButton
+                type="normal-right"
+                text="Add an article"
+                isLoading={false}
+                handleOnClick={() => setDisplayMode("Create")}
+              />
+            )}
           </div>
         </div>
 
         <div className="flex flex-col mt-10 gap-8 mb-6 overflow-auto h-[calc(100vh-100px)]">
-          <ArticleListItem />
+          {posts.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full">
+              <PackageOpen className="w-24 h-24 text-gray-500" />{" "}
+              {/* 6xl is roughly 24rem */}
+              <p className="mt-4 text-lg text-gray-600">No posts created yet</p>
+            </div>
+          )}
+
+          {posts.map((post: any) => (
+            <PostComponent
+              key={post.id}
+              post={post}
+              setDisplayMode={setDisplayMode}
+              setSelectedPost={setSelectedPost}
+            />
+          ))}
+          {/*  <ArticleListItem />
 
           <ArticleListItem />
 
@@ -34,7 +97,7 @@ const Articles = ({
 
           <ArticleListItem />
 
-          <ArticleListItem />
+          <ArticleListItem /> */}
         </div>
       </div>
       <div className="w-1/4">

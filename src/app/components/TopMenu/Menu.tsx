@@ -23,6 +23,8 @@ const Menu = () => {
     activeLink.length > 0
       ? setIsActiveHomeLink(true)
       : setIsActiveHomeLink(false);
+
+    console.log("active route====", activeRoute);
   }, [activeRoute]);
 
   return (
@@ -32,6 +34,10 @@ const Menu = () => {
           return (
             <li
               key={index}
+              onClick={() => {
+                setActiveRoute(link);
+                console.log("link", link.route);
+              }}
               className={`mx-4 relative p-2 border-b-4 ${
                 activeRoute.route === link.route
                   ? " border-green text-dark-blue font-bold"
@@ -50,15 +56,16 @@ const Menu = () => {
                     console.log("link", link.route);
                   }}
                   className="cursor-pointer"
-                >
-                  {link.name}{" "}
-                </Link>
+                ></Link>
               ) : (
                 <a href={`${link.route}`}>{link.name}</a>
               )}
             </li>
           );
         })}
+        <li className="mx-4 relative p-2">
+          <a href="/blog">Blog</a>
+        </li>
       </ul>
     </nav>
   );

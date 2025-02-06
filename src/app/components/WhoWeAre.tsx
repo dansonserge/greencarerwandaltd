@@ -22,7 +22,9 @@ function WhoWeAre() {
           young men and women.
         </div>
         <div>
-          <CustomButton text={"More Details"} type={"normal"} />
+          <a href="/blog/about-us">
+            <CustomButton text={"More Details"} type={"normal"} />
+          </a>
         </div>
       </div>
       <div className="w-1/2 hidden md:block">

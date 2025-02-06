@@ -1,27 +1,46 @@
 // @ts-nocheck
 "use client";
+
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+
 import Layout from "../components/Layout";
 import Image from "next/image";
 import BannerImageOne from "@public/assets/BannerImageOne.svg";
 import { useState } from "react";
 import CustomButton from "@/app/components/CustomButton";
+import Alert from "../components/Tools/Alert";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const router = useRouter();
   interface FormDataType {
-    username: string;
+    email: string;
     password: string;
   }
   interface TouchedFieldsType {
-    username: boolean;
+    email: boolean;
     password: boolean;
   }
 
+  interface AlertsInterface {
+    title: string;
+    message: string;
+    isError: boolean;
+    showAlert: boolean;
+  }
+
   const initValues = {
-    username: "",
+    email: "",
     password: "",
   };
+  const alertMessage: AlertsInterface = {
+    title: "eeee",
+    message: "sssss",
+    isError: false,
+    showAlert: false,
+  };
   const initTouchedValues = {
-    username: false,
+    email: false,
     password: false,
   };
 
@@ -32,6 +51,7 @@ const Login = () => {
 
   const [formData, setFormData] = useState(initState);
   const [touched, setTouched] = useState<TouchedFieldsType>(initTouchedValues);
+  const [alert, setAlert] = useState<AlertMessage>(alertMessage);
 
   const { values, isLoading } = formData;
 
@@ -42,19 +62,52 @@ const Login = () => {
   const onBlurHandler = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }));
 
-  const handleChange = ({ target }) =>
+  const handleChange = ({ target }) => {
+    console.log(target.value);
     setFormData((prev) => ({
-      ...prev.values,
-      values: { ...prev.values, [target.name]: target.value },
+      ...prev, // Ensure we spread all the previous state first
+      values: { ...prev.values, [target.name]: target.value }, // Only update the specific field
       isLoading: false,
     }));
+  };
 
   const onSubmit = async () => {
-    setFormData((prev) => ({
-      ...prev,
-      isLoading: true,
-    }));
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(formData.values),
+    };
+
+    const res = await fetch("api/auth/login", requestOptions)
+      .then((response) => {
+        console.log(response);
+        if (response.status == 400) {
+          console.log("test");
+          response.json().then((data) => {
+            toast.error(data.message);
+          });
+        } else {
+          toast.success("Succcessfully authenticated!");
+          response.json().then((data) => {
+            setAlert({
+              title: "Success",
+              message: data.message,
+              isError: false,
+              showAlert: true,
+            });
+
+            localStorage.setItem("user-details", JSON.stringify(data));
+            router.push("/blog");
+          });
+        }
+      })
+      .finally(() => {
+        setFormData({ ...formData, isLoading: false });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
   return (
     <Layout>
       <div className="flex justify-evenly md:pt-24">
@@ -66,23 +119,26 @@ const Login = () => {
           <p className="ml-2 gradient-accent-color font-[1000] text-2xl">
             Login
           </p>
+
+          {/* {alert.showAlert && (
+            <Alert title={alert.title} message={alert.message} />
+          )} */}
+
           <div className="flex flex-col gap-3">
-            <label htmlFor="username" className="ml-2 font-[700]">
-              Username <span className=" text-red-400">*</span>
+            <label htmlFor="email" className="ml-2 font-[700]">
+              email <span className=" text-red-400">*</span>
             </label>
             <input
               type="text"
-              name="username"
+              name="email"
               className={`contactUsInput border ${
-                touched.username &&
-                values.username.length === 0 &&
-                "border-red-400"
+                touched.email && values.email.length === 0 && "border-red-400"
               }`}
-              value={values.username}
+              value={values.email}
               onChange={handleChange}
               onBlur={onBlurHandler}
             ></input>
-            {touched.username && values.username.length === 0 && (
+            {touched.email && values.email.length === 0 && (
               <span className="ml-2 text-red-400">Required</span>
             )}
           </div>
@@ -106,7 +162,14 @@ const Login = () => {
               <span className="ml-2 text-red-400">Required</span>
             )}
           </div>
-          <div className="flex justify-end" onClick={() => handleSendEmail()}>
+          <div
+            className="flex justify-end"
+            onClick={() =>
+              onSubmit().then(() => {
+                setFormData({ ...formData, isLoading: false });
+              })
+            }
+          >
             <CustomButton
               type="normal-right"
               text="Login"
