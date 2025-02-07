@@ -64,6 +64,7 @@ function ContactUsForm() {
     try {
       const response = await fetch("api/contact", requestOptions);
       if (!response.ok) {
+        toast.error("Failed to send message. Please try again.");
         throw new Error("Failed to send message");
       }
       toast.success("Message sent successfully!");
