@@ -97,7 +97,11 @@ export const updatePost = async (post: {
     }
 
     // Prepare the data to update
-    const postData = {
+    const postData:{
+      title: string;
+      content:string;
+      image?: string
+    } = {
       title: post.title,
       content: post.content,
     };

@@ -30,7 +30,7 @@ export const GET = async (req: Request, { params }: { params: { id: string } }) 
         });
   }
 };
-export const DELETE = async (req: Request, { params }: { params: { id: string } }) => {
+export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
    const res = await authenticateUser(req);
     if (res?.ok===false) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 

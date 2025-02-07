@@ -7,6 +7,7 @@ interface TokenPayload {
   email: string;
   iat: number;
   exp: number;
+  ok: string;
 }
 
 export function generateJWT(user: any) {
