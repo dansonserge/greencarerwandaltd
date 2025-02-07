@@ -1,3 +1,4 @@
+import { any } from './../../../../../../node_modules/@types/prop-types/index.d';
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import prisma from "@/DB/db.config";
@@ -25,7 +26,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     });
 
     return NextResponse.json(updatedUser);
-  } catch (error) {
+  } catch (error :any) {
     return NextResponse.json({ message: "Error updating user", error: error.message }, { status: 500 });
   }
 }
@@ -41,7 +42,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     await prisma.user.delete({ where: { id: userId } });
 
     return NextResponse.json({ message: "User deleted successfully" });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ message: "Error deleting user", error: error.message }, { status: 500 });
   }
 }

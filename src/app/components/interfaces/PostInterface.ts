@@ -1,6 +1,7 @@
 export interface User {
   name: string;
   email: string;
+  id?: number
 }
 
 export interface Post {

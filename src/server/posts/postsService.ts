@@ -2,7 +2,7 @@ import prisma from "@/DB/db.config";
 import axios from "axios";
 import crypto from "crypto";
 import { NextResponse } from "next/server";
-import upload, { uploadImage } from "@/server/upload/uploadService";
+
 
 export const createPost = async (post: {
   title: string;
@@ -16,7 +16,6 @@ export const createPost = async (post: {
     }
 
     const imageUrl = await uploadToCloudinary(post.image);
-    //const imageUrl = await uploadImage(post.image);
 
     if (!imageUrl) {
       throw new Error(`Failed to upload image to images server`);
