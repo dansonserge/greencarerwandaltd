@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Layout from "../components/Layout";
 import { getToken } from "@/lib/jwt";
+import { User } from "../components/interfaces/PostInterface";
 
 export default function UsersPage() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [formData, setFormData] = useState({
     id: null,
     name: "",
@@ -50,12 +50,12 @@ export default function UsersPage() {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRegisterOrUpdate = async (e) => {
+  const handleRegisterOrUpdate = async (e: any) => {
     e.preventDefault();
     setLoading(true);
 
@@ -88,7 +88,7 @@ export default function UsersPage() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number | undefined) => {
     try {
       const token = getToken();
       if (!token) throw new Error("User not authenticated");
@@ -106,7 +106,7 @@ export default function UsersPage() {
     }
   };
 
-  const handleEdit = (user) => {
+  const handleEdit = (user: any) => {
     setFormData({
       id: user.id,
       name: user.name,

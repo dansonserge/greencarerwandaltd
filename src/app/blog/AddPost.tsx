@@ -26,33 +26,6 @@ const ImageUpload: React.FC<{ setImage: (file: File | null) => void }> = ({
   };
 
   return (
-    /*    <div
-      className="flex flex-col items-center justify-center bg-gray-100 cursor-pointer min-h-[20rem] mb-6"
-      onClick={() => fileInputRef.current?.click()}
-    >
-      <div className="flex flex-col items-center p-4 max-h-120">
-        {preview === "" && (
-          <h2 className="text-xl font-bold">Upload Article image</h2>
-        )}
-        <input
-          type="file"
-          ref={fileInputRef}
-          accept="image/*"
-          onChange={handleImageChange}
-          className="hidden"
-        />
-        {preview && (
-          <div className="relative flex flex-col items-center justify-center bg-gray-50 cursor-pointer min-h-[20rem] mb-6 h-[500px]">
-            <Image
-              layout="fill"
-              src={preview}
-              alt="Preview"
-              objectFit="contain"
-            />
-          </div>
-        )}
-      </div>
-    </div> */
     <div
       className="relative flex flex-col items-center justify-center bg-gray-50 cursor-pointer min-h-[20rem] mb-6 h-[500px] "
       onClick={() => fileInputRef.current?.click()}

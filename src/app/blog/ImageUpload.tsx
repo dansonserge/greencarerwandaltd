@@ -65,17 +65,7 @@ const ImageUpload: React.FC = () => {
           onChange={handleImageChange}
           className="mb-4 p-2 border rounded hidden"
         />
-        {/*   <button
-          onClick={handleUpload}
-          disabled={loading || !image}
-          className={`py-2 px-4 rounded text-white transition-colors duration-300 ${
-            loading || !image
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-600 hover:bg-blue-700"
-          }`}
-        >
-          {loading ? "Uploading..." : "Upload Image"}
-        </button> */}
+
         {error && <div className="text-red-500 mt-2">{error}</div>}
         {preview && (
           <div className="mt-4 w-full max-w-xl max-h-56">

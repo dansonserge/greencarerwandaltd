@@ -10,6 +10,10 @@ const Custom404 = () => {
     router.replace("/");
   }, [router]);
 
-  return null;
+  return (
+    <>
+      <h1>where are you going?</h1>
+    </>
+  );
 };
 export default Custom404;

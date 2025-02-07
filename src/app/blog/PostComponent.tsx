@@ -2,9 +2,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import "react-quill/dist/quill.bubble.css";
-import ReactQuill from "react-quill";
-import CustomButton from "../components/CustomButton";
-import axios from "axios";
 import { Post } from "../components/interfaces/PostInterface";
 import { Pencil, Trash2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -47,13 +44,11 @@ const PostComponent = ({
     try {
       const token = getToken();
       if (!token) throw new Error("User not authenticated");
-      // await axios.delete(`/api/posts/by-id/${articleId}`);
-      // toast.success("Article deleted successfully!");
-      // setIsModalOpen(false);
+
       const myHeaders = new Headers();
       myHeaders.append("Authorization", `Bearer ${token}`);
 
-      const requestOptions = {
+      const requestOptions: RequestInit = {
         method: "DELETE",
         headers: myHeaders,
         redirect: "follow",
@@ -155,7 +150,7 @@ const PostComponent = ({
                 </div>
 
                 {userDetails?.token && (
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center mr-5">
                     <button
                       className="px-3 py-1 flex items-center gap-1 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200 shadow-md"
                       onClick={() => {
