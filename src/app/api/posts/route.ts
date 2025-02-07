@@ -1,7 +1,6 @@
 import { createPost } from "@/server/posts/postsService";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/DB/db.config";
-import upload, { uploadImage } from "@/server/upload/uploadService";
 import { authenticateUser } from "@/lib/auth";
 
  export const POST = async (req: NextRequest) => {
