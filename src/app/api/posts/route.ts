@@ -41,9 +41,8 @@ import { authenticateUser } from "@/lib/auth";
 export const GET = async () => {
   try {
     const posts = await prisma.post.findMany({
-
       orderBy: {
-        createdAt: "desc",
+        id: "desc",
       },
 
       include: {

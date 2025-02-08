@@ -110,8 +110,8 @@ const Login = () => {
 
   return (
     <Layout>
-      <div className="flex justify-evenly md:pt-24">
-        <div>
+      <div className="p-7 sm:flex sm:justify-evenly md:pt-24">
+        <div className="hidden sm:block">
           <Image src={BannerImageOne} alt={"Banner Image One"} width={840} />
         </div>
 

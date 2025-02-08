@@ -48,8 +48,8 @@ const PostPage = () => {
 
   return (
     <Layout>
-      <div className="flex px-20 gap-10 pt-5">
-        <div className="w-3/4">
+      <div className="flex px-3 sm:px-20 gap-10 pt-5">
+        <div className="sm:w-3/4 ">
           <div className="flex gap-10 pt-2 justify-between">
             <p className="gradient-accent-color font-extrabold text-4xl">
               Article
@@ -82,7 +82,7 @@ const PostPage = () => {
             />
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="sm:w-1/4 sm:block hidden">
           <iframe
             className="w-full min-h-[calc(100vh)]"
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100063590337079&tabs=timeline&width=1000&height=1000&small_header=false&adapt_container_width=true&hide_cover=true&show_facepile=true&appId"
