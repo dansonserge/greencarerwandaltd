@@ -65,6 +65,15 @@ const PostComponent = ({
     }
   };
 
+  function getInitials(name: string) {
+    const words = name.trim().split(/\s+/);
+    if (words.length === 1) {
+      return words[0][0].toUpperCase();
+    } else if (words.length >= 2) {
+      return (words[0][0] + words[1][0]).toUpperCase();
+    }
+  }
+
   return (
     <>
       {/* Delete Confirmation Modal */}
@@ -99,33 +108,33 @@ const PostComponent = ({
       {/* Blog Post Display */}
       <div className="flex px-8 cursor-pointer">
         <div className="flex flex-grow">
-          <div className="relative min-w-[220px] min-h-[220px] max-w-[220px] max-h-[220px] overflow-hidden">
+          <div className="w-1/3 relative ">
             <Image
               src={optimizedImageUrl}
               alt={post.title}
-              width={220}
-              height={220}
               priority
+              fill
               placeholder="blur"
               blurDataURL={optimizedImageUrl}
-              className="object-cover"
+              className=" object-cover"
               onClick={() => {
                 router.push(`/blog/${post.slug}`);
               }}
             />
           </div>
-          <div className="flex flex-col justify-between pl-5 gap-4 flex-grow bg-[#f7f7f7] py-2">
+
+          <div className="flex flex-col justify-between pl-5 gap-4 bg-[#f7f7f7] py-2 w-2/3">
             <div
               className="flex flex-col gap-4"
               onClick={() => {
                 router.push(`/blog/${post.slug}`);
               }}
             >
-              <p className="font-bold text-3xl max-w-[600px] overflow-hidden whitespace-nowrap text-ellipsis">
+              <p className="font-bold md:text-xl max-w-[600px] overflow-hidden whitespace-nowrap text-ellipsis">
                 {post.title}
               </p>
               <p
-                className="font-medium text-lg min-w-full overflow-hidden text-ellipsis line-clamp-3"
+                className="md:font-medium min-w-full overflow-hidden text-ellipsis line-clamp-2"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               ></p>
             </div>
@@ -134,12 +143,12 @@ const PostComponent = ({
               <div className="flex justify-between">
                 <div className="flex gap-6">
                   <span
-                    className="w-16 h-16 flex items-center justify-center rounded-full text-white text-2xl font-bold random-bg"
+                    className="w-12 h-12 flex items-center justify-center rounded-full text-white text-2xl font-bold random-bg"
                     style={{
                       backgroundColor: `hsl(${randomHue}, 70%, 60%)`,
                     }}
                   >
-                    UA
+                    {getInitials(post.user.name)}
                   </span>
                   <div className="flex flex-col justify-center">
                     <p className="font-bold">{post.user.name}</p>
@@ -150,7 +159,7 @@ const PostComponent = ({
                 </div>
 
                 {userDetails?.token && (
-                  <div className="flex gap-2 items-center mr-5">
+                  <div className=" gap-2 items-center mr-5 hidden lg:flex">
                     <button
                       className="px-3 py-1 flex items-center gap-1 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200 shadow-md"
                       onClick={() => {

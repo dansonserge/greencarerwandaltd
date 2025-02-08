@@ -84,10 +84,9 @@ const EditPost = ({
         body: formData,
         headers: myHeaders,
       });
-      const result = await response.text();
-      console.log("Post submitted successfully:", result);
 
-      setDisplayMode("List");
+      toast.success("Post submitted successfully");
+      fetchPosts().then(() => setDisplayMode("List"));
     } catch (error) {
       console.error("Error submitting post:", error);
       alert("Failed to submit post. Please try again.");

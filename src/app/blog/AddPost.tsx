@@ -53,7 +53,6 @@ const AddPost = ({
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
   const { fetchPosts } = useFetchPosts(false);
 
   const handleSubmit = async () => {
@@ -83,7 +82,7 @@ const AddPost = ({
       });
       const result = await response.text();
       toast.success("Post submitted successfully");
-      setDisplayMode("List");
+      fetchPosts().then(() => setDisplayMode("List"));
     } catch (error) {
       toast.error("Failed to submit post. Please try again");
     } finally {
