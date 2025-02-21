@@ -66,11 +66,11 @@ const OurProducts = () => {
       </div>
       <div className="gcr-rounded-products-wrapper gcr-rounded-wrapper border border-gray-900 lg:mb-16 bg-light-grey flex flex-col py-5 px-8 xl:px-12 md:h-[520px] lg:pt-14 relative  lg:grow lg:gap-8 ">
         <div className="gcr-products-top-description text-xl lg:text-2xl text-[#3C3F40]">
-          At <b>Greencare Rwanda Ltd</b>, we offer a range of competitive
-          products that provide solutions to the agricultural sector,
-          environmental protection, and construction projects. Our products are
-          designed to promote a greener future while meeting the highest quality
-          standards.
+          At <b>Greencare Rwanda Ltd,</b> we offer a range of competitive
+          products like Grekompost that provide solutions to food security and
+          sustainable agriculture by increasing soil fertility and productivity.
+          We also promote recyclable materials to be processed by other
+          factories, for contribute to the the circular economy.
         </div>
         <div className="flex flex-col md:flex-row top-52 left-0 lg:px-4 xl:gap-14 xl:px-18">
           {products.map((product, index) => {

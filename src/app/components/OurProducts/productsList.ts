@@ -9,7 +9,7 @@ import { ProductType } from './types';
 export const products :  ProductType[] = [
     {
         productName:'Grekompost',
-        description: 'Fine textured, packaged compost with known chemical composition used to improve  soil fertility and productivity.',
+        description: 'A premium, finely textured, and packaged compost with a scientifically balanced chemical composition, designed to enhance soil fertility and boost agricultural productivity. Ideal for both home gardens and large-scale farming, Grekompost supports sustainable growth while improving soil structure and nutrient availability.',
         image: Grekompost
     },
     {

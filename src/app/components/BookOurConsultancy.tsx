@@ -27,10 +27,12 @@ function BookOurConsultancy() {
           services Today{" "}
         </div>
         <div className="font-[400] text-[#272727] text-xl text-center mx-5 md:mx-0 md:text-left">
-          We provide a consultant in waste management by developing the best
-          model for waste management and composting system for good quality,
-          project assistant in solid waste management, advise in agriculture,
-          recyclable materials treatments.
+          We provide consultancy services for projects in cities and secondary
+          cities related to waste management and composting processes. Our
+          services include designing and building waste management
+          infrastructure, operating compost production from bio-waste, and
+          developing profitable business models for urban, semi-urban, and
+          emergency areas in Rwanda and abroad.
         </div>
         <div className="relative">
           <div className="absolute md:mt-[20px right-5 md:right-0">
