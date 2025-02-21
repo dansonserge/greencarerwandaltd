@@ -21,20 +21,23 @@ function SmallAboutUs() {
           <div className="flex flex-col gap-3">
             <div className="text-dark-blue font-bold text-2xl">Our Mission</div>
             <div className="font-[400] text-[#272727] text-xl">
-              Greencare Rwanda ltd is to revolutionize  waste management by
-              providing integrated solutions  that promote  production and
-              distribution of organic fertilizers (Grekompost), plastics pavers
-              for construction projects, and the sales of recyclables materials
-              to other recycling factories for a greener future.
+              Greencare Rwanda Ltd is committed to driving sustainable waste
+              management by producing organic fertilizers, branded grekompost
+              from bio- waste promoting recyclables materials, and reducing
+              landfill waste and greenhouse gas emissions. We aim to create
+              long-term environmental and economic impacts for supporting the
+              circular economy for a greener future.
             </div>
           </div>
           <div className="flex flex-col gap-3">
             <div className="text-dark-blue font-bold text-2xl">Our Vision</div>
             <div className="font-[400] text-[#272727] text-xl">
-              To be one of the top companies in waste management services and
-              market leader in the production and sales of branded  organic
-              fertilizers,  plastics pavers and recyclables materials to promote
-              circular economy.
+              To be a leading company in waste management services, recognized
+              for excellence in producing and selling branded organic
+              fertilizers, plastic pavers, and recyclable materials. We aim to
+              promote the circular economy while offering expert consultancy
+              services in waste management, composting, and recycling solutions,
+              empowering businesses and communities for a sustainable future.
             </div>
           </div>
         </div>
@@ -43,28 +46,30 @@ function SmallAboutUs() {
             <tbody>
               <tr>
                 <td className="text-dark-blue text-5xl text-right font-poppins font-black pb-4">
+                  2M
+                </td>
+                <td className="text-[#2A6419] pl-5 pb-4">
+                  <p>2 millions of tons </p> of Bio- waste to be treated per
+                  year.
+                </td>
+              </tr>
+
+              <tr>
+                <td className="text-dark-blue text-5xl text-right font-poppins font-black pb-4">
                   400
                 </td>
                 <td className="text-[#2A6419] pl-5 pb-4">
-                  <p>Tons per year</p>
-                  <p>of compost</p>
+                  <p>400 tons of the compost</p> produced per Year
                 </td>
               </tr>
-              <tr>
-                <td className="text-dark-blue text-5xl text-right font-poppins font-black pb-4">
-                  2,560
-                </td>
-                <td className="text-[#2A6419] pl-5 pb-4">
-                  <p>Meter Square / Year</p> <p>of ecological pavers</p>{" "}
-                </td>
-              </tr>
+
               <tr>
                 <td className="text-dark-blue text-5xl text-right font-poppins font-black">
-                  25
+                  300+
                 </td>
                 <td className="text-[#2A6419] pl-5">
-                  <p>Number </p>
-                  <p>of employees</p>
+                  <p>Green jobs</p>
+                  <p>creation</p>
                 </td>
               </tr>
             </tbody>

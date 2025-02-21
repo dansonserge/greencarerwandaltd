@@ -23,11 +23,19 @@ const IntroCarousel = () => {
           <div className="lg:hidden block">
             <Image src={BannerImageOne} alt={"Banner Image One"} width={840} />
           </div>
-          <div className="intro-text text-2xl md:text-4xl lg:text-2xl xl:text-4xl ">
-            <span className="font-bold">Greencare Rwanda ltd </span>conducts
-            research and develop the business models for waste management by
-            supporting the public sector to convert the landfill into recycling
-            plants to promote circular economy and environmental protection.
+          <div className="intro-text text-xl md:text-4xl lg:text-xl xl:text-2xl ">
+            <span className="font-bold">Greencare Rwanda Ltd </span>provides a
+            sustainable business model for solid waste management through the
+            design, construction, and operation of a Bio-waste facility. The
+            company converts all bio-waste into organic fertilizers, branded as
+            Grekompost, while reducing bio-waste sent to landfills by 100%.
+            <br />
+            <br />
+            <span className="font-bold">Greencare Rwanda Ltd </span> also
+            promotes the sorting and sale of recyclable materials to other
+            industries, supporting the circular economy. This approach creates
+            green jobs, reduces landfill waste, and helps lower greenhouse gas
+            emissions in the
           </div>
           <div className="flex gap-4">
             <a href="/blog/about-us">
@@ -44,7 +52,7 @@ const IntroCarousel = () => {
           </div>
         </div>
         <div className="hidden lg:block">
-          <Image src={BannerImageOne} alt={"Banner Image One"} width={840} />
+          <Image src={BannerImageOne} alt={"Banner Image One"} width={600} />
         </div>
       </div>
     </div>
