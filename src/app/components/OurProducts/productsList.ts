@@ -1,7 +1,7 @@
 
 import Grekompost from '@public/assets/grekompost.svg';
 import Pavers from '@public/assets/pavers.svg';
-import RecyclableMaterials from '@public/assets/recyclable-materials.svg';
+import RecyclableMaterials from '@public/assets/recyclable-material-image.png';
 import { ProductType } from './types';
 
 

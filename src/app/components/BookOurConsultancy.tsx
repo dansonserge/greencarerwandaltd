@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import ConsultantImage from "@public/assets/consultant-image.svg";
+import ConsultantImage from "@public/assets/consultant.png";
 import CustomButton from "./CustomButton";
 import ContactUsIcon from "@public/assets/contactUsIcon.svg";
 

@@ -83,7 +83,7 @@ const OurProducts = () => {
                   `gap-4 bg-white gcr-rounded-product-wrapper mt-5 mb-6 xl:mb-12 h-fit`
                 }`}
               >
-                <div className="flex flex-col items-center gap-4 px-5 pt-5">
+                <div className="flex flex-col items-center gap-2 px-5 pt-2">
                   <Image src={product.image} alt={product.productName} />
                   <div className="gcr-products-product-name">
                     {product.productName}
@@ -99,7 +99,7 @@ const OurProducts = () => {
                   </div>
                 </div>
                 <div
-                  className={`grid justify-items-stretch pb-5 pr-10 ${
+                  className={`grid justify-items-stretch pb-1 pr-10 ${
                     selectedProduct.productName === product.productName
                       ? `block`
                       : `hidden`

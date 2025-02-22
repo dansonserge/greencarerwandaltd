@@ -1,6 +1,6 @@
 import Image from "next/image";
 import DotsSelector from "./DotsSelector";
-import BannerImageOne from "@public/assets/BannerImageOne.svg";
+import BannerImageOne from "@public/assets/banner-image.png";
 import CustomButton from "../CustomButton";
 import ContactUsIcon from "@public/assets/contactUsIcon.svg";
 import { redirect } from "next/navigation";
