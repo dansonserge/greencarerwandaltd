@@ -42,6 +42,9 @@ function SmallAboutUs() {
           </div>
         </div>
         <div className="w-full md:w-3/12 flex flex-col">
+          <span className="text-dark-blue text-2xl text-left font-poppins font-black pb-4">
+            OUR 2050 TARGET
+          </span>
           <table>
             <tbody>
               <tr>

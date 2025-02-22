@@ -7,6 +7,9 @@ import CustomButton from "../CustomButton";
 import TwitterLogo from "@public/assets/twitter-logo.svg";
 import InstagramLogo from "@public//assets/instagram.svg";
 import Youtube from "@public/assets/youtube.svg";
+import FaceBookLogo from "@public/assets/fb-logo.svg";
+import LinkedInLogo from "@public/assets/linkedin logo.svg";
+
 import { footerLinks } from "./footerMenu";
 import ContactUsForm from "./ContactUsForm";
 import ContactUsSection from "./ContactUsSection";
@@ -34,6 +37,19 @@ function Footer({ userDetails }: { userDetails: UserResponse | undefined }) {
               target="_blank"
             >
               <Image src={Youtube} alt="youtube" width={50} />{" "}
+            </Link>
+            <Link
+              href={"https://www.facebook.com/profile.php?id=100063590337079"}
+              target="_blank"
+            >
+              <Image src={FaceBookLogo} alt="facebook" width={50} />{" "}
+            </Link>
+
+            <Link
+              href={"linkedin.com/company/greencare-rwanda-ltd"}
+              target="_blank"
+            >
+              <Image src={LinkedInLogo} alt="facebook" width={50} />{" "}
             </Link>
           </div>
           <div className="flex gap-8 text-xs md:text-lg md:mx-0">
